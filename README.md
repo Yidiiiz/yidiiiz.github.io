@@ -1,1 +1,0 @@
-# yidiiiz.github.io
