@@ -19,29 +19,32 @@
 
 
     <div id="container">
-        <div id="sidePanel" class="primary1">
-            <div id="infoPanel" class="panel">
-                <h1 style="">
-                    HOME
-                </h1>
+        <div id="sidePanel" class="secondary1">
+            <div id="scrollPanel" class="panel secondary1" style="left:-300px;">
+                <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()" style="position:relative;">
+                    <img src="assets/website/Menu.png" alt="Menu Icon" style="margin: 24px 0 0 24px; height:30px;">
+                </a>
             </div>
 
-            <!-- <div id="scrollPanel" class="panel">
+            <div id="infoPanel" class="panel primary1" style="left:0;">
+                <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()" style="position:relative;">
+                    <img src="assets/website/Menu.png" alt="Menu Icon" style="margin: 24px 0 0 24px; height:30px;">
+                </a>
+                
+                <div class="text1">
+                    <h1 style="margin:10px 0; padding:0 40px;">
+                        Home
+                    </h1>
 
-            </div> -->
-            <!-- <div id="homePanel" class="side secondary1">
-
-            </div> -->
-
-            <footer style="display:inline-block; width:100%; height:10%;">
-                <!-- <p style="width:100%; text-align:center; margin-top:2%; font-size:14px; font-family:Verdana, Geneva, Tahoma, sans-serif; color:#2f2f2fc5;">
-                    <b>&copy;2025 Yidi Zhao, All Rights Reserved</b>
-                </p> -->
-                <!-- <div style="position:absolute; left:0; bottom:0; width:100%; height:0px; margin:0%; margin-top:0%; padding:10px;">
-                    
-                </div> -->
-                <a href="https://discord.gg/TBAekR968G" target="_blank"><img src="assets/pages/Discord.png" alt="Discord Icon" style="position:sticky; right:0; bottom:0; margin:20px; height:20px;"></a>
-            </footer>
+                    <p style="margin:10px 0; padding:0 40px;">
+                        Welcome to my portfolio, this will be where I showcase all of my projects!
+                    </p>
+                </div>
+                
+                <a href="https://discordapp.com/users/684834283017469985" target="_blank">
+                    <img src="assets/website/Discord.png" alt="Discord Profile Link" style="position:relative; float:right; bottom:0; margin: 0 40px 40px 0; height:30px;">
+                </a>
+            </div>
         </div>
     
 
@@ -64,10 +67,11 @@
 
 
             <div class="content">
-                <h1 class="head1">
+                <h1 class="text1">
                     Yidi Zhao
                 </h1>
-                <p class="tertiary1 head1">
+                
+                <p class="tertiary1 text1">
                     Welcome to my portfolio, this is where I will showcase all of my projects!
                 </p>
             </div>
@@ -77,6 +81,10 @@
                     <b>&copy;2025 Yidi Zhao, All Rights Reserved</b>
                 </p>
             </footer>
+
+            <a id="hideBtn" href="javascript:void(0)" onclick="toggleSide()" style="position:absolute; opacity:.1; transform: translate(0, -50%); top:50vh; left:24px; height:30px; width:15px; transition:.5s;">
+                <img id="hideImg" src="assets/website/Hide.png" alt="Menu Icon" style="width:100%; height:100%;">
+            </a>
         </div>
     </div>
 
