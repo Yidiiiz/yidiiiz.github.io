@@ -187,7 +187,7 @@ p {
 
     /* transform: translate(0, -50%); */
     
-    top: 24px;
+    top: 24px; /*50vh*/
     left: 324px;
     
     height: 30px;
