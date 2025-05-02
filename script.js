@@ -2,7 +2,14 @@ var navOpen = false;
 var sideOpen = true;
 
 const pages = ["Home", "Roblox", "Unity", "Modeling", "Skills"];
+const divs = [document.getElementById("homePanel"), document.getElementById("robloxPanel")];
 var pageIndex = 0;
+
+let currentPanel = document.getElementById("homePanel");
+
+let isAtTop = true;
+let isAtBottom = false;
+let pageChanging = false;
 
 function toggleNav() {
     navOpen = !navOpen;
@@ -20,7 +27,7 @@ function toggleSide() {
 
     if (sideOpen) {
         document.getElementById("sidePanel").style.left = "0";
-        document.getElementById("mainPanel").style.left = "300px";
+        currentPanel.style.left = "300px";
         
         document.getElementById("hideBtn").style.left = "-24px";
         
@@ -30,7 +37,7 @@ function toggleSide() {
         }, 200);
     } else {
         document.getElementById("sidePanel").style.left = "-300px";
-        document.getElementById("mainPanel").style.left = "0";
+        currentPanel.style.left = "0";
 
         document.getElementById("hideBtn").style.left = "-24px";
         
@@ -41,76 +48,75 @@ function toggleSide() {
     }
 }
 
-function togglePage(page) {
+function togglePage(newIndex) {
+    if (newIndex < 0 || newIndex > pages.length) {
+        return;
+    }
+
+    if (newIndex > pageIndex) {
+        divs[pageIndex].style.top = "-100%";
+        divs[newIndex].style.top = "0";
+        let isAtTop = true;
+        let isAtBottom = false;
+    } else if (newIndex < pageIndex) {
+        divs[pageIndex].style.top = "0";
+        divs[newIndex].style.top = "100%";
+        let isAtTop = false;
+        let isAtBottom = true;
+    } else {
+        return;
+    }
     
+
+    pageIndex = newIndex;
+    currentPanel = divs[newIndex];
+    
+    currentPanel.onscroll = (e)=>{
+        console.log(currentPanel.scrollTop);
+        if (currentPanel.scrollTop < 1){
+            isAtTop = true;
+        } else {
+            isAtTop = false;
+        }
+    
+        if (currentPanel.scrollTop + currentPanel.offsetHeight > currentPanel.scrollHeight - 1){
+            isAtBottom = true;
+        } else {
+            isAtBottom = false;
+        }
+    }
+
+    setTimeout(() => {
+        pageChanging = false;
+    }, 500);
 }
 
 
 
-// function scrolled() {
-//     console.log('AAAAAAAAA');
+currentPanel.onscroll = (e)=>{
+    if (currentPanel.scrollTop < 1){
+        isAtTop = true;
+    } else {
+        isAtTop = false;
+    }
 
-//     const { innerHeight, scrollY } = window;
-//     const { scrollHeight } = document.body;
+    if (currentPanel.scrollTop + currentPanel.offsetHeight > currentPanel.scrollHeight - 1){
+        isAtBottom = true;
+    } else {
+        isAtBottom = false;
+    }
+}
 
-//     if (innerHeight + scrollY >= scrollHeight) {
-//         // User has reached the bottom of the page
-//         console.log('Reached the end of the page!');
-//         // Place your code here to execute when the user hits the bottom
-//     }
-
-    
-// }
-
-// document.getElementById("mainPanel")?.addEventListener('scroll', scrolled);
-
-
-
-
-
-
-// const divElement = document.getElementById("mainPanel");
-
-// let lastScrollTop = 0;
-// let isAtEnd = false;
-// divElement.onscroll = (e)=>{
-//     console.log("AAAAAA");
-//     if (divElement.scrollTop < lastScrollTop){
-//         // upscroll 
-//         return;
-//     } 
-//     lastScrollTop = divElement.scrollTop <= 0 ? 0 : divElement.scrollTop;
-//     if (divElement.scrollTop + divElement.offsetHeight >= divElement.scrollHeight + 1 ){
-//         console.log("End");
-//     }
-// }
-
-// window.addEventListener("wheel", function(event) {
-//     const delta = event.deltaY;
+window.addEventListener("wheel", function(event) {
+    const delta = event.deltaY;
   
-//     if (delta > 0) {
-//       // Scrolled down
-//       console.log("Scrolled down");
-//     } else if (delta < 0) {
-//       // Scrolled up
-//       console.log("Scrolled up");
-//     }
-//   });
+    if (!pageChanging && delta < 0 && isAtTop) {
+        pageChanging = true;
+        togglePage(pageIndex - 1);
+    }
 
-// window.addEventListener('scroll', () => {
-//     console.log("BBBBB");
-
-//     const { innerHeight, scrollY } = divElement;
-//     const { scrollHeight } = divElement.body;
-
-//     if (innerHeight + scrollY >= scrollHeight) {
-//         if (!endOfScroll) {
-//             console.log('Reached the end of the page for the first time!');
-//             endOfScroll = true;
-//         } else {
-//             console.log('Still scrolling at the bottom');
-//         }
-//     } else {
-//         endOfScroll = false; // Reset the flag if the user scrolls back up
-//     }
-// });
+    if (!pageChanging && delta > 0 && isAtBottom) {
+        pageChanging = true;
+        togglePage(pageIndex + 1);
+    }
+});

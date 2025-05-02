@@ -59,7 +59,7 @@ p {
 
 
 /* Main */
-#mainPanel {
+.mainPanel {
     /* flex: 4; */
     /* flex:calc(100%-300px); */
     overflow:scroll;
@@ -71,7 +71,7 @@ p {
     right: 0px;
 
     height: 100%;
-    transition: .5s;
+    transition: 1s;
 }
 
 #myVid {
