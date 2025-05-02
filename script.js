@@ -1,6 +1,9 @@
 var navOpen = false;
 var sideOpen = true;
 
+const pages = ["Home", "Roblox", "Unity", "Modeling", "Skills"];
+var pageIndex = 0;
+
 function toggleNav() {
     navOpen = !navOpen;
     if (navOpen){
@@ -36,4 +39,8 @@ function toggleSide() {
             document.getElementById("hideBtn").style.left = "24px";
         }, 400);
     }
+}
+
+function togglePage() {
+    
 }
