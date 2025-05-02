@@ -184,7 +184,6 @@ p {
 #hideBtn {
     position: absolute;
     opacity: .1;
-
     /* transform: translate(0, -50%); */
     
     top: 24px; /*50vh*/
