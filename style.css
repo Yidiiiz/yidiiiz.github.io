@@ -116,6 +116,9 @@ p {
 #gravitate {
     margin:20px;
 }
+#gravitate iframe {
+    border-radius: 5px;
+}
 
 .vid {
     display: inline-block;
