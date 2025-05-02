@@ -264,3 +264,8 @@ img, video, h1, p {
     -ms-user-select: none;
     pointer-events: none;
 }
+
+*::-webkit-media-controls-start-playback-button {
+    display: none!important;
+    -webkit-appearance: none;
+  }
