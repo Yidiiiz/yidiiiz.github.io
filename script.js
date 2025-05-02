@@ -41,6 +41,76 @@ function toggleSide() {
     }
 }
 
-function togglePage() {
+function togglePage(page) {
     
 }
+
+
+
+// function scrolled() {
+//     console.log('AAAAAAAAA');
+
+//     const { innerHeight, scrollY } = window;
+//     const { scrollHeight } = document.body;
+
+//     if (innerHeight + scrollY >= scrollHeight) {
+//         // User has reached the bottom of the page
+//         console.log('Reached the end of the page!');
+//         // Place your code here to execute when the user hits the bottom
+//     }
+
+    
+// }
+
+// document.getElementById("mainPanel")?.addEventListener('scroll', scrolled);
+
+
+
+
+
+
+// const divElement = document.getElementById("mainPanel");
+
+// let lastScrollTop = 0;
+// let isAtEnd = false;
+// divElement.onscroll = (e)=>{
+//     console.log("AAAAAA");
+//     if (divElement.scrollTop < lastScrollTop){
+//         // upscroll 
+//         return;
+//     } 
+//     lastScrollTop = divElement.scrollTop <= 0 ? 0 : divElement.scrollTop;
+//     if (divElement.scrollTop + divElement.offsetHeight >= divElement.scrollHeight + 1 ){
+//         console.log("End");
+//     }
+// }
+
+// window.addEventListener("wheel", function(event) {
+//     const delta = event.deltaY;
+  
+//     if (delta > 0) {
+//       // Scrolled down
+//       console.log("Scrolled down");
+//     } else if (delta < 0) {
+//       // Scrolled up
+//       console.log("Scrolled up");
+//     }
+//   });
+
+// window.addEventListener('scroll', () => {
+//     console.log("BBBBB");
+
+//     const { innerHeight, scrollY } = divElement;
+//     const { scrollHeight } = divElement.body;
+
+//     if (innerHeight + scrollY >= scrollHeight) {
+//         if (!endOfScroll) {
+//             console.log('Reached the end of the page for the first time!');
+//             endOfScroll = true;
+//         } else {
+//             console.log('Still scrolling at the bottom');
+//         }
+//     } else {
+//         endOfScroll = false; // Reset the flag if the user scrolls back up
+//     }
+// });
