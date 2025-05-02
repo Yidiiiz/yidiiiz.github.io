@@ -268,4 +268,4 @@ img, video, h1, p {
 *::-webkit-media-controls-start-playback-button {
     display: none!important;
     -webkit-appearance: none;
-  }
+}
