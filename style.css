@@ -83,7 +83,7 @@ footer {
     right: 0px;
 
     height: 100%;
-    transition: 1s;
+    transition: .5s;
 }
 
 #myVid {
@@ -263,7 +263,7 @@ footer {
 
 /* Other */
 
-img, video, h1, p {
+img, video, h1, p, p !a {
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;

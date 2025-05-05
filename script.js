@@ -28,7 +28,10 @@ function toggleSide() {
 
     if (sideOpen) {
         document.getElementById("sidePanel").style.left = "0";
-        currentPanel.style.left = "300px";
+        // currentPanel.style.left = "300px";
+        for (let i = 0; i < divs.length; i++) {
+            divs[i].style.left = "300px";
+        }
         
         document.getElementById("hideBtn").style.left = "-24px";
         
@@ -38,7 +41,10 @@ function toggleSide() {
         }, 200);
     } else {
         document.getElementById("sidePanel").style.left = "-300px";
-        currentPanel.style.left = "0";
+        // currentPanel.style.left = "0";
+        for (let i = 0; i < divs.length; i++) {
+            divs[i].style.left = "0";
+        }
 
         document.getElementById("hideBtn").style.left = "-24px";
         
