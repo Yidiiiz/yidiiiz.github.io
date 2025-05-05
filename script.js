@@ -13,6 +13,7 @@ let pageChanging = false;
 
 function toggleNav() {
     navOpen = !navOpen;
+
     if (navOpen){
         document.getElementById("scrollPanel").style.left = "0%";
         document.getElementById("infoPanel").style.left = "-300px";
@@ -50,50 +51,42 @@ function toggleSide() {
 
 function togglePage(newIndex) {
     if (newIndex < 0 || newIndex > pages.length) {
+        pageChanging = false;
         return;
     }
+    console.log(newIndex);
+
 
     if (newIndex > pageIndex) {
         divs[pageIndex].style.top = "-100%";
         divs[newIndex].style.top = "0";
-        let isAtTop = true;
-        let isAtBottom = false;
+
+        isAtTop = true;
+        isAtBottom = false;
     } else if (newIndex < pageIndex) {
-        divs[pageIndex].style.top = "0";
-        divs[newIndex].style.top = "100%";
-        let isAtTop = false;
-        let isAtBottom = true;
+        divs[pageIndex].style.top = "100%";
+        divs[newIndex].style.top = "0%";
+
+        isAtTop = false;
+        isAtBottom = true;
     } else {
+        pageChanging = false;
         return;
     }
-    
 
     pageIndex = newIndex;
+    currentPanel.removeEventListener('click', checkPosition);
     currentPanel = divs[newIndex];
     
-    currentPanel.onscroll = (e)=>{
-        console.log(currentPanel.scrollTop);
-        if (currentPanel.scrollTop < 1){
-            isAtTop = true;
-        } else {
-            isAtTop = false;
-        }
-    
-        if (currentPanel.scrollTop + currentPanel.offsetHeight > currentPanel.scrollHeight - 1){
-            isAtBottom = true;
-        } else {
-            isAtBottom = false;
-        }
-    }
+    currentPanel.addEventListener('scroll', checkPosition);
+    checkPosition();
 
-    setTimeout(() => {
-        pageChanging = false;
-    }, 500);
+    pageChanging = false;
 }
 
 
 
-currentPanel.onscroll = (e)=>{
+function checkPosition() {
     if (currentPanel.scrollTop < 1){
         isAtTop = true;
     } else {
@@ -113,10 +106,10 @@ window.addEventListener("wheel", function(event) {
     if (!pageChanging && delta < 0 && isAtTop) {
         pageChanging = true;
         togglePage(pageIndex - 1);
-    }
-
-    if (!pageChanging && delta > 0 && isAtBottom) {
+    } else if (!pageChanging && delta > 0 && isAtBottom) {
         pageChanging = true;
         togglePage(pageIndex + 1);
     }
 });
+
+currentPanel.addEventListener('scroll', checkPosition);
