@@ -41,14 +41,14 @@
                 </p>
 
                 <p class="tertiary1 text1">
-                    Gravitate: (unity is bugged, use 
-                    <a href="https://play.unity.com/en/games/7abda266-e1e8-4ec1-9b17-4580c9ce0e24/gravitate-v021e" class="text1">this link</a>
-                     if consent requested)
+                    Gravitate <br>
+                    (If unity prompts for consent, use 
+                    <a target="_blank" href="https://play.unity.com/en/games/7abda266-e1e8-4ec1-9b17-4580c9ce0e24/gravitate" class="text1">this link</a>)
                 </p>
 
                 <div id="gravitate">
-                    <iframe frameborder="0" src="https://play.unity.com/en/games/7abda266-e1e8-4ec1-9b17-4580c9ce0e24/gravitate-v021" allowfullscreen width="100%" height="100%">
-                        <a href="https://play.unity.com/en/games/7abda266-e1e8-4ec1-9b17-4580c9ce0e24/gravitate-v021">Gravitate</a>
+                    <iframe id="gravitateFrame" frameborder="0" src="https://play.unity.com/en/games/7abda266-e1e8-4ec1-9b17-4580c9ce0e24/gravitate" allowfullscreen width="100%" height="100%">
+                        <a target="_blank" href="https://play.unity.com/en/games/7abda266-e1e8-4ec1-9b17-4580c9ce0e24/gravitate">Gravitate</a>
                     </iframe>
                 </div>
             </div>
@@ -59,6 +59,8 @@
 
             
         </div>
+
+        
 
         <div id="robloxPanel" class="mainPanel secondary" style="top:100%;">
             <div class="vid">
@@ -81,12 +83,6 @@
                 <p class="tertiary1 text1">
                     Welcome to my portfolio, this is where I will showcase all of my projects!
                 </p>
-
-                <div id="gravitate">
-                    <iframe frameborder="0" src="https://play.unity.com/en/games/7abda266-e1e8-4ec1-9b17-4580c9ce0e24/gravitate-v021" allowfullscreen width="100%" height="100%">
-                    </iframe>
-
-                </div>
             </div>
             
             <footer>
@@ -111,10 +107,10 @@
                 </a>
 
                 <div id="menu">
-                    <a href="/index.html" class="active">Home</a>
-                    <a href="/roblox.html">Roblox</a>
-                    <a href="/unity.html">Unity</a>
-                    <a href="/modeling.html">Modeling</a>
+                    <a onclick="togglePage(0)" class="active">Home</a>
+                    <a onclick="togglePage(1)">Unity</a>
+                    <a onclick="togglePage(2)">Roblox</a>
+                    <a onclick="togglePage(3)">Modeling</a>
                 </div>
 
                 <div style="margin: 24px 0 0 24px; height: 30px;"></div>
@@ -125,7 +121,7 @@
                     <img src="assets/website/Menu.png" alt="Menu Icon">
                 </a>
                 
-                <div class="text1">
+                <div class="text1 sideContent">
                     <h1 style="margin:10px 0; padding:0 40px;">
                         Hello,
                     </h1>

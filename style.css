@@ -76,7 +76,7 @@ footer {
     overflow:scroll;
     overflow-y: overlay;
     overflow-x: hidden;
-    
+    scroll-behavior: smooth;
 
     position: fixed;
     left: 300px;
@@ -263,12 +263,20 @@ footer {
 
 /* Other */
 
-img, video, h1, p, p !a {
+img, video, h1, p {
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     pointer-events: none;
+}
+
+a {
+    user-select: auto;
+    -webkit-user-select: auto;
+    -moz-user-select: auto;
+    -ms-user-select: auto;
+    pointer-events: auto;
 }
 
 *::-webkit-media-controls-start-playback-button {

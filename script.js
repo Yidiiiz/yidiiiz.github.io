@@ -1,7 +1,7 @@
 var navOpen = false;
 var sideOpen = true;
 
-const pages = ["Home", "Roblox", "Unity", "Modeling", "Skills"];
+const pages = ["Home", "Unity", "Roblox", "Modeling"];
 const divs = [document.getElementById("homePanel"), document.getElementById("robloxPanel")];
 var pageIndex = 0;
 
@@ -69,21 +69,29 @@ function togglePage(newIndex) {
 
         isAtTop = true;
         isAtBottom = false;
+
+        // currentPanel.scrollTop = currentPanel.scrollHeight + 100;
+        // divs[newIndex].scrollTop = 0;
     } else if (newIndex < pageIndex) {
         divs[pageIndex].style.top = "100%";
         divs[newIndex].style.top = "0%";
 
         isAtTop = false;
         isAtBottom = true;
+
+        // currentPanel.scrollTop = 0;
+        // divs[newIndex].scrollTop = currentPanel.scrollHeight + 100;
     } else {
         pageChanging = false;
         return;
     }
-
+    currentPanel.scrollTop = 0;
+    divs[newIndex].scrollTop = 0;
+    
     pageIndex = newIndex;
     currentPanel.removeEventListener('click', checkPosition);
+
     currentPanel = divs[newIndex];
-    
     currentPanel.addEventListener('scroll', checkPosition);
     checkPosition();
 
@@ -117,5 +125,7 @@ window.addEventListener("wheel", function(event) {
         togglePage(pageIndex + 1);
     }
 });
+
+// document.getElementById('gravitateFrame').scrollTo("100px");
 
 currentPanel.addEventListener('scroll', checkPosition);
