@@ -1,8 +1,13 @@
 var navOpen = false;
 var sideOpen = true;
 
-const pages = ["Home", "Unity", "Roblox", "Modeling"];
-const divs = [document.getElementById("homePanel"), document.getElementById("robloxPanel")];
+const pages = ["Home", "Gravitate", "Roblox", "Modeling"];
+const divs = [
+    document.getElementById("homePanel"), 
+    document.getElementById("gravitatePanel"), 
+    document.getElementById("robloxPanel"), 
+    document.getElementById("modelingPanel")
+];
 var pageIndex = 0;
 
 let currentPanel = document.getElementById("homePanel");
@@ -10,6 +15,7 @@ let currentPanel = document.getElementById("homePanel");
 let isAtTop = true;
 let isAtBottom = false;
 let pageChanging = false;
+let scrollEnd = true;
 
 function toggleNav() {
     navOpen = !navOpen;
@@ -56,7 +62,7 @@ function toggleSide() {
 }
 
 function togglePage(newIndex) {
-    if (newIndex < 0 || newIndex > pages.length) {
+    if (newIndex < 0 || newIndex > pages.length - 1) {
         pageChanging = false;
         return;
     }
@@ -70,8 +76,8 @@ function togglePage(newIndex) {
         isAtTop = true;
         isAtBottom = false;
 
-        // currentPanel.scrollTop = currentPanel.scrollHeight + 100;
-        // divs[newIndex].scrollTop = 0;
+        currentPanel.scrollTop = currentPanel.scrollHeight + 100;
+        divs[newIndex].scrollTop = 0;
     } else if (newIndex < pageIndex) {
         divs[pageIndex].style.top = "100%";
         divs[newIndex].style.top = "0%";
@@ -79,21 +85,28 @@ function togglePage(newIndex) {
         isAtTop = false;
         isAtBottom = true;
 
-        // currentPanel.scrollTop = 0;
-        // divs[newIndex].scrollTop = currentPanel.scrollHeight + 100;
+        currentPanel.scrollTop = 0;
+        divs[newIndex].scrollTop = currentPanel.scrollHeight + 100;
     } else {
         pageChanging = false;
         return;
     }
-    currentPanel.scrollTop = 0;
-    divs[newIndex].scrollTop = 0;
+    // currentPanel.scrollTop = 0;
+    // divs[newIndex].scrollTop = 0;
     
+    document.getElementById(pages[pageIndex]).classList.remove("active");
+    document.getElementById(pages[newIndex]).classList.add("active");
+
     pageIndex = newIndex;
-    currentPanel.removeEventListener('click', checkPosition);
+    currentPanel.removeEventListener("wheel", scrolled);
+    currentPanel.removeEventListener('scrollend', scrollEnded);
 
     currentPanel = divs[newIndex];
-    currentPanel.addEventListener('scroll', checkPosition);
+    currentPanel.addEventListener("wheel", scrolled);
+    currentPanel.addEventListener('scrollend', scrollEnded);
     checkPosition();
+    scrollEnd = true;//FIX SCROLLSDLFJS:LDFKJSD:LKFJSDFKSDJF:LKJl;KJHA DJKSHFLDHSFD JLKSD FLKJSHDLKF HSKDJ 
+
 
     pageChanging = false;
 }
@@ -114,18 +127,25 @@ function checkPosition() {
     }
 }
 
-window.addEventListener("wheel", function(event) {
+
+function scrolled(event) {
+    checkPosition();
+
     const delta = event.deltaY;
-  
-    if (!pageChanging && delta < 0 && isAtTop) {
+    if (!pageChanging && scrollEnd && delta < 0 && isAtTop) {
         pageChanging = true;
         togglePage(pageIndex - 1);
-    } else if (!pageChanging && delta > 0 && isAtBottom) {
+    } else if (!pageChanging && scrollEnd && delta > 0 && isAtBottom) {
         pageChanging = true;
         togglePage(pageIndex + 1);
     }
-});
 
-// document.getElementById('gravitateFrame').scrollTo("100px");
+    scrollEnd = delta != 0 ? false : scrollEnd;
+}
 
-currentPanel.addEventListener('scroll', checkPosition);
+function scrollEnded() {
+    scrollEnd = true;
+}
+
+currentPanel.addEventListener("wheel", scrolled);
+currentPanel.addEventListener('scrollend', scrollEnded);

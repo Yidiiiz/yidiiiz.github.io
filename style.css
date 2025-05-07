@@ -76,7 +76,7 @@ footer {
     overflow:scroll;
     overflow-y: overlay;
     overflow-x: hidden;
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth; */
 
     position: fixed;
     left: 300px;
@@ -93,6 +93,11 @@ footer {
     
     object-fit: fill;
     transform: translate(-50%, -100%);
+}
+
+.filtered {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
 }
 
 /* Main Classes */
@@ -174,8 +179,7 @@ footer {
 }
 #menu a.active {
     color: #b7b7b7e2;
-    font-size: 23px;
-    /* transition: 0.2s; */
+    font-size: 24px;
 }
 
 #sidePanel {
