@@ -40,12 +40,33 @@
                     Welcome to my portfolio... 
                 </p>
 
-                <h1 class="text1">
+                <!-- <h1 class="text1">
                     Skills
                 </h1>
                 <div id="skills">
+ 
+                </div> -->
+                <div class="content">
+                    <h1 class="text1">
+                        Gravitate
+                    </h1>
 
+                    <p class="tertiary1 text1">
+                        Manipulate gravity by touching a wall, spinning your orientation to match your new gravity! <br>
+                        (If unity prompts for consent, use 
+                        <a target="_blank" href="https://play.unity.com/en/games/7abda266-e1e8-4ec1-9b17-4580c9ce0e24/gravitate" class="text1">this link</a>)
+                    </p>
+
+                    <div id="gravitate">
+                        <iframe id="gravitateFrame" frameborder="0" src="https://play.unity.com/en/games/7abda266-e1e8-4ec1-9b17-4580c9ce0e24/gravitate" allowfullscreen width="100%" height="100%">
+                            <a target="_blank" href="https://play.unity.com/en/games/7abda266-e1e8-4ec1-9b17-4580c9ce0e24/gravitate">Gravitate</a>
+                        </iframe>
+                    </div>
                 </div>
+                
+                <footer>
+                    &copy;2025 Yidi Zhao, All Rights Reserved
+                </footer>
             </div>
             
             <footer>
@@ -54,7 +75,7 @@
         </div>
 
         <div id="gravitatePanel" class="mainPanel secondary1"style="top:100%;">
-            <div class="vid">
+            <!-- <div class="vid">
                 <div id="ColorOverlay" style="background-color:black; opacity:0.5; width:100%; height:100%;"></div>
 
                 <video autoplay muted loop playsinline id="myVid">
@@ -64,7 +85,7 @@
                 <script>
                     document.getElementById('myVid').play();
                 </script>
-            </div>
+            </div> -->
 
             <div class="content">
                 <h1 class="text1">
@@ -108,9 +129,6 @@
                 &copy;2025 Yidi Zhao, All Rights Reserved
             </footer>
         </div>
-        <a id="hideBtn" href="javascript:void(0)" onclick="toggleSide()">
-            <img id="hideImg" src="assets/website/Hide.png" alt="Menu Icon">
-        </a>
 
         <div id="modelingPanel" class="mainPanel secondary" style="top:100%;">
             <div class="vid">
@@ -147,7 +165,7 @@
                 <div id="menu">
                     <a id="Home" onclick="togglePage(0)" class="active">Home</a>
                     <a id="Gravitate" onclick="togglePage(1)">Gravitate</a>
-                    <a id="Roblox" onclick="togglePage(2)">Roblox</a>
+                    <a id="Roblox" onclick="togglePage(2)">Development</a>
                     <a id="Modeling" onclick="togglePage(3)">Modeling</a>
                 </div>
 
