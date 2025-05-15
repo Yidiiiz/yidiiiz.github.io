@@ -132,6 +132,12 @@ footer {
     border-radius: 10px;
 }
 
+#gravitate blockquote {
+    margin: 20px;
+    height: 90vh;
+    border-radius: 10px;
+}
+
 .vid {
     display: inline-block;
     height: 100vh;
