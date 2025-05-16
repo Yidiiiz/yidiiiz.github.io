@@ -76,7 +76,7 @@ footer {
     overflow:scroll;
     overflow-y: overlay;
     overflow-x: hidden;
-    /* scroll-behavior: smooth; */
+    scroll-behavior: smooth;
 
     position: fixed;
     left: 300px;

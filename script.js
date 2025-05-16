@@ -70,6 +70,10 @@ function togglePage(newIndex) {
 
 
     if (newIndex > pageIndex) {
+        divs[newIndex].style.transition = "0s";
+        divs[newIndex].style.top = "100%";
+        divs[newIndex].style.transition = ".5s";
+        
         divs[pageIndex].style.top = "-100%";
         divs[newIndex].style.top = "0";
 
@@ -79,6 +83,10 @@ function togglePage(newIndex) {
         currentPanel.scrollTop = currentPanel.scrollHeight + 100;
         divs[newIndex].scrollTop = 0;
     } else if (newIndex < pageIndex) {
+        divs[newIndex].style.transition = "0s";
+        divs[newIndex].style.top = "-100%";
+        divs[newIndex].style.transition = ".5s";
+
         divs[pageIndex].style.top = "100%";
         divs[newIndex].style.top = "0%";
 
