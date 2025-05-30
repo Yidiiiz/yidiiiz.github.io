@@ -1,13 +1,20 @@
 var navOpen = false;
 var sideOpen = true;
 
-const pages = ["Home", "Gravitate", "Roblox", "Modeling"];
+const pages = [
+    "Home", 
+    "Gravitate", 
+    "Roblox", 
+    "Modeling"
+];
+
 const divs = [
     document.getElementById("homePanel"), 
     document.getElementById("gravitatePanel"), 
     document.getElementById("robloxPanel"), 
     document.getElementById("modelingPanel")
 ];
+
 var pageIndex = 0;
 
 let currentPanel = document.getElementById("homePanel");
@@ -17,8 +24,8 @@ let isAtBottom = false;
 let pageChanging = false;
 let scrollEnd = true;
 
-function toggleNav() {
-    navOpen = !navOpen;
+function toggleNav(isTrue) {
+    navOpen = isTrue != null ? isTrue : !navOpen;
 
     if (navOpen){
         document.getElementById("scrollPanel").style.left = "0%";
@@ -34,7 +41,7 @@ function toggleSide() {
 
     if (sideOpen) {
         document.getElementById("sidePanel").style.left = "0";
-        // currentPanel.style.left = "300px";
+
         for (let i = 0; i < divs.length; i++) {
             divs[i].style.left = "300px";
         }
@@ -47,7 +54,7 @@ function toggleSide() {
         }, 200);
     } else {
         document.getElementById("sidePanel").style.left = "-300px";
-        // currentPanel.style.left = "0";
+
         for (let i = 0; i < divs.length; i++) {
             divs[i].style.left = "0";
         }
@@ -62,60 +69,50 @@ function toggleSide() {
 }
 
 function togglePage(newIndex) {
-    if (newIndex < 0 || newIndex > pages.length - 1) {
+    if (newIndex < 0 || newIndex > pages.length - 1 || newIndex == pageIndex) {
         pageChanging = false;
         return;
     }
-    console.log(newIndex);
 
+    divs[pageIndex].style.transition = "none";
+    divs[newIndex].style.transition = "none";
+    divs[newIndex].scrollTop = 0;
+    divs[newIndex].style.top = newIndex > pageIndex ? "100%" : "-100%";
 
-    if (newIndex > pageIndex) {
-        divs[newIndex].style.transition = "0s";
-        divs[newIndex].style.top = "100%";
-        divs[newIndex].style.transition = ".5s";
-        
-        divs[pageIndex].style.top = "-100%";
-        divs[newIndex].style.top = "0";
+    void divs[pageIndex].offsetWidth;
+    void divs[newIndex].offsetWidth;
+    divs[pageIndex].style.transition = "";
+    divs[newIndex].style.transition = "";
 
-        isAtTop = true;
-        isAtBottom = false;
+    divs[pageIndex].style.top = newIndex > pageIndex ? "-100%" : "100%";
+    divs[newIndex].style.top = "0%";
 
-        currentPanel.scrollTop = currentPanel.scrollHeight + 100;
-        divs[newIndex].scrollTop = 0;
-    } else if (newIndex < pageIndex) {
-        divs[newIndex].style.transition = "0s";
-        divs[newIndex].style.top = "-100%";
-        divs[newIndex].style.transition = ".5s";
-
-        divs[pageIndex].style.top = "100%";
-        divs[newIndex].style.top = "0%";
-
-        isAtTop = false;
-        isAtBottom = true;
-
-        currentPanel.scrollTop = 0;
-        divs[newIndex].scrollTop = currentPanel.scrollHeight + 100;
-    } else {
-        pageChanging = false;
-        return;
-    }
-    // currentPanel.scrollTop = 0;
-    // divs[newIndex].scrollTop = 0;
+    isAtTop = true;
+    isAtBottom = false;
     
     document.getElementById(pages[pageIndex]).classList.remove("active");
     document.getElementById(pages[newIndex]).classList.add("active");
 
+    divs[pageIndex].removeEventListener("wheel", scrolled);
+    divs[pageIndex].removeEventListener('scrollend', scrollEnded);
+
+    divs[newIndex].addEventListener("wheel", scrolled);
+    divs[newIndex].addEventListener('scrollend', scrollEnded);
+
+    document.getElementById("back").classList.remove("secondary" + (pageIndex+1));
+    document.getElementById("back").classList.add("secondary" + (newIndex+1));
+
+    document.getElementById("infoPanel").classList.remove("primary" + (pageIndex+1));
+    document.getElementById("infoPanel").classList.add("primary" + (newIndex+1));
+
     pageIndex = newIndex;
-    currentPanel.removeEventListener("wheel", scrolled);
-    currentPanel.removeEventListener('scrollend', scrollEnded);
-
     currentPanel = divs[newIndex];
-    currentPanel.addEventListener("wheel", scrolled);
-    currentPanel.addEventListener('scrollend', scrollEnded);
+
+    // toggleNav(false);
+
     checkPosition();
-    scrollEnd = true;//FIX SCROLLSDLFJS:LDFKJSD:LKFJSDFKSDJF:LKJl;KJHA DJKSHFLDHSFD JLKSD FLKJSHDLKF HSKDJ 
 
-
+    scrollEnd = true;
     pageChanging = false;
 }
 
@@ -148,7 +145,7 @@ function scrolled(event) {
         togglePage(pageIndex + 1);
     }
 
-    scrollEnd = delta != 0 ? false : scrollEnd;
+    scrollEnd = delta != 0;
 }
 
 function scrollEnded() {
