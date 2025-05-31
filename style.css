@@ -30,11 +30,11 @@
 
 /* Page 3 */
 .primary3 {
-    background: rgb(48, 0, 23);
+    background: rgb(78, 37, 25);
 }
 
 .secondary3 {
-    background: rgb(67, 0, 32);
+    background: rgb(94, 45, 31);
 }
 
 /* .tertiary3 {
@@ -124,7 +124,7 @@ p {
     overflow: hidden;
 }
 
-#myVid {
+.screen {
     position: absolute;
     top: 100%;
     left: 50%;
@@ -168,7 +168,7 @@ footer {
     height: 40px;
 
     text-align:center;
-    padding: 20px 0 40px 0;
+    padding: 30px 0 30px 0;
     background: rgb(0, 0, 0, 0.2);
 
     z-index: 3;
@@ -352,9 +352,9 @@ footer {
 
 .scrolling img {
     opacity: .2;
-    height: 15px;
-    width: 30px;
-    margin-top:12px;
+    height: 10px;
+    width: 20px;
+    margin-top:8px;
 }
 
 #upScrolling {
@@ -376,9 +376,9 @@ footer {
 
 #upScrolling img {
     opacity: .2;
-    height: 15px;
-    width: 30px;
-    margin-bottom:8px;
+    height: 10px;
+    width: 20px;
+    margin-bottom:4px;
 
     transform:rotate(180deg);
 }
