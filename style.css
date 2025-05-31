@@ -259,7 +259,7 @@ footer {
 
 /* Side */
 #menu {
-    display:flex;
+    display: flex;
     flex-direction: column;
 }
 
