@@ -18,7 +18,7 @@ https://flameyzyzyz.github.io/
         
         <title>Yidiiiz</title>
         <link href="style.css" rel="stylesheet" type="text/css"/>
-        <link rel="icon" type="image/x-icon" href="assets/website/favicon.ico">
+        <link rel="icon" type="image/x-icon" href="assets/website/icons/favicon.ico">
     </body>
 
     
@@ -26,7 +26,7 @@ https://flameyzyzyz.github.io/
     <div id="container">
         <!-- Home -->
         <div id="homePanel" class="mainPanel secondary1"style="top:0;">
-            <div class="vid">
+            <div class="intro">
                 <div style="position:absolute; background-color:#050505; width:100%; height:100%;"></div>
                 
                 <video autoplay muted loop playsinline id="myVid" style="min-width: 100%;">
@@ -43,19 +43,13 @@ https://flameyzyzyz.github.io/
                     This website serves as my portfolio, presenting what I consider to be my best work.
                     <br><br>
                     Take a look around to find professional work, personal projects, and a touch of my perspective.
-                    <br><br>
-                    Continue scrolling!
                 </p>
 
-                <!--<div id="skills">
+                <!-- <div id="skills">
                 </div> -->
             </div>
-                
-            <footer>
-                <p style="margin: 30px; font-size: 14px; color:rgba(142, 142, 152, 0.532)">
-                    keep scrolling
-                </p>
 
+            <footer>
                 &copy;2025 Yidi Zhao, All Rights Reserved
             </footer>
         </div>
@@ -64,14 +58,14 @@ https://flameyzyzyz.github.io/
 
         <!-- Gravitate -->
         <div id="gravitatePanel" class="mainPanel secondary2"style="top:100%;">
-            <div class="vid">
+            <div class="intro">
                 <div id="ColorOverlay" style="position:absolute; background-color:#383838; width:100%; height:100%; outline: none;"></div>
 
                 <video autoplay muted loop playsinline id="myVid">
                     <source src="assets/pages/gravitate/gravVid.mp4" type="video/mp4">
                 </video>
 
-                <div style="position:absolute; background-color:#000000; opacity:0.5; width:100%; height:100%; z-index: 2;"></div>
+                <div style="position:absolute; background-color:#000000; opacity:0.5; width:100%; height:100%; z-index: 1;"></div>
             </div>
 
             <div class="content">
@@ -80,9 +74,9 @@ https://flameyzyzyz.github.io/
                 </h1>
 
                 <p class="primary2 text">
-                    Manipulate gravity by touching a wall, spinning your orientation to match your new gravity! <br>
-                    (If unity prompts for consent, use 
-                    <a target="_blank" href="https://play.unity.com/en/games/7abda266-e1e8-4ec1-9b17-4580c9ce0e24/gravitate" class="text">this link</a>)<br>
+                    Manipulate gravity by touching a wall, spinning your orientation to match your new gravity! <br><br>
+                    !! If unity prompts for consent, use 
+                    <a target="_blank" href="https://play.unity.com/en/games/7abda266-e1e8-4ec1-9b17-4580c9ce0e24/gravitate" class="text">this link</a> !!<br>
                 </p>
 
                 <h2 class="text">
@@ -91,17 +85,19 @@ https://flameyzyzyz.github.io/
 
                 <p class="primary2 text">
                     Gravitate was developed in unity using C#<br>
-                    Microsoft Azure used to store and get user login and leaderboard data
+                    Microsoft Azure for storing and getting user login and leaderboard data
                 </p>
 
 
                 <div id="frame">
-                    <iframe frameborder="0" src="https://play.unity.com/en/games/7abda266-e1e8-4ec1-9b17-4580c9ce0e24/gravitate" allowfullscreen width="100%" height="100%">
-                        <a target="_blank" href="https://play.unity.com/en/games/7abda266-e1e8-4ec1-9b17-4580c9ce0e24/gravitate">Gravitate</a>
-                    </iframe>
+                    <div id="crop">
+                        <iframe frameborder="0" src="https://play.unity.com/en/games/7abda266-e1e8-4ec1-9b17-4580c9ce0e24/gravitate" allowfullscreen height="100%">
+                            <a target="_blank" href="https://play.unity.com/en/games/7abda266-e1e8-4ec1-9b17-4580c9ce0e24/gravitate">Gravitate</a>
+                        </iframe>
+                    </div>
                 </div>
             </div>
-            
+
             <footer>
                 &copy;2025 Yidi Zhao, All Rights Reserved
             </footer>
@@ -111,12 +107,9 @@ https://flameyzyzyz.github.io/
         
         <!-- Roblox -->
         <div id="robloxPanel" class="mainPanel secondary3" style="top:100%;">
-            <!-- <div class="vid">
+            <div class="intro">
 
-                <video autoplay muted loop playsinline id="myVid">
-                    <source src="assets/pages/modeling/vid.mp4" type="video/mp4">
-                </video>
-            </div> -->
+            </div>
 
             <div class="content">
                 <h1 class="text">
@@ -128,7 +121,7 @@ https://flameyzyzyz.github.io/
                     <a class="text" target="_blank" href="https://www.roblox.com/games/118374237236833/Squish-Game">link</a>
                 </p>
             </div>
-            
+
             <footer>
                 &copy;2025 Yidi Zhao, All Rights Reserved
             </footer>
@@ -137,8 +130,8 @@ https://flameyzyzyz.github.io/
 
 
         <!-- Modeling -->
-        <div id="modelingPanel" class="mainPanel secondary4" style="top:100%;">
-            <div class="vid">
+        <div id="modelingPanel" class="mainPanel secondary4" style="top:100%; z-index: 1;">
+            <div class="intro">
                 <div id="ColorOverlay" style="position:absolute; background-color:#937B6C; width:100%; height:100%;"></div>
 
                 <video autoplay muted loop playsinline id="myVid">
@@ -153,20 +146,47 @@ https://flameyzyzyz.github.io/
 
                 <p class="primary4 text">
                     I started 3D modeling around 2019, I have been using blender for around 6 years!<br>
-                    My mode
+                    I have 
                 </p>
+
+                <div id="gallery">
+                    <img src="assets/pages/modeling/weapons/CR-L.png">
+                    <img src="assets/pages/modeling/weapons/CR-LStudio.png">
+                    <img src="assets/pages/modeling/weapons/ValoKnife.png">
+                    <img src="assets/pages/modeling/weapons/OmnitechAR-5A.png">
+                    <img src="assets/pages/modeling/weapons/OmnitechAR-5AStudio.png">
+                    <img src="assets/pages/modeling/weapons/DC-15.png">
+                    <img src="assets/pages/modeling/weapons/AK-47.png">
+                    <img src="assets/pages/modeling/weapons/AK-47Studio.png">
+                    <img src="assets/pages/modeling/weapons/Sword.png">
+                    <img src="assets/pages/modeling/weapons/M-25Hornet.png">
+                    <img src="assets/pages/modeling/weapons/M-25HornetRoblox.png">
+                </div>
             </div>
-            
+
             <footer>
                 &copy;2025 Yidi Zhao, All Rights Reserved
             </footer>
         </div>
         
         <a id="hideBtn" href="javascript:void(0)" onclick="toggleSide()">
-            <img id="hideImg" src="assets/website/Hide.png" alt="Menu Icon">
+            <img id="hideImg" src="assets/website/icons/Hide.png" alt="Menu Icon">
         </a>
         
+        <div id="keepScrolling" class="text scrolling">
+            Keep<br>Scrolling<br>
+            <img src="assets/website/icons/scroll.png" alt="Menu Icon">
+        </div>
 
+        <div id="stillScrolling" class="text scrolling" style="opacity: 0;">
+            You Can Still<br>Keep Scrolling<br>
+            <img src="assets/website/icons/scroll.png" alt="Menu Icon">
+        </div>
+
+        <div id="upScrolling" class="text">
+            <img src="assets/website/icons/scroll.png" alt="Menu Icon">
+            <br>You Can Scroll<br>Up Too
+        </div>
 
 
 
@@ -176,28 +196,19 @@ https://flameyzyzyz.github.io/
             <!-- Navigation -->
             <div id="scrollPanel" class="panel" style="left:-300px;">
                 <a href="javascript:void(0)" class="closeBtn" onclick="toggleNav()">
-                    <img src="assets/website/Menu.png" alt="Menu Icon">
+                    <img src="assets/website/icons/Menu.png" alt="Menu Icon">
                 </a>
 
-                <div id="menu">
+                <div id="menu" class="text">
                     <a id="Home" onclick="togglePage(0)" class="active">Home</a>
                     <a id="Gravitate" onclick="togglePage(1)">Gravitate</a>
                     <a id="Roblox" onclick="togglePage(2)">Roblox</a>
-                    <a id="Modeling" onclick="togglePage(3)">Modeling</a>
+                    <a id="Modeling" onclick="togglePage(3)">3D Modeling</a>
                     <!-- <a id="Photography" onclick="togglePage(4)">Photography</a> -->
                 </div>
 
                 <content id="contactIcons">
                     <a style="height: 30px;"></a>
-                    <!-- <a href="https://github.com/Yidiiiz" target="_blank">
-                        <img src="assets/website/logos/Github.png" alt="Github Profile Link">
-                    </a>
-                    <a href="https://www.linkedin.com/in/yidiiiz" target="_blank">
-                        <img src="assets/website/logos/Linkedin.png" alt="Linkedin Profile Link">
-                    </a>
-                    <a href="https://discordapp.com/users/684834283017469985" target="_blank">
-                        <img src="assets/website/logos/Discord.png" alt="Discord Profile Link">
-                    </a> -->
                 </content>
             </div>
 
@@ -206,7 +217,7 @@ https://flameyzyzyz.github.io/
             <!-- Information -->
             <div id="infoPanel" class="panel primary1" style="left:0;">
                 <a href="javascript:void(0)" class="closeBtn" onclick="toggleNav()">
-                    <img src="assets/website/Menu.png" alt="Menu Icon">
+                    <img src="assets/website/icons/Menu.png" alt="Menu Icon">
                 </a>
                 
                 <div class="text sideContent"  style="text-align: center;">

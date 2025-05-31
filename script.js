@@ -47,9 +47,11 @@ function toggleSide() {
         }
         
         document.getElementById("hideBtn").style.left = "-24px";
+        document.getElementById("keepScrolling").style.left = "324px";
+        document.getElementById("stillScrolling").style.left = "324px";
         
         setTimeout(() => {
-            document.getElementById("hideImg").src = "assets/website/Hide.png";
+            document.getElementById("hideImg").src = "assets/website/icons/Hide.png";
             document.getElementById("hideBtn").style.left = "324px";
         }, 200);
     } else {
@@ -60,9 +62,11 @@ function toggleSide() {
         }
 
         document.getElementById("hideBtn").style.left = "-24px";
+        document.getElementById("keepScrolling").style.left = "24px";
+        document.getElementById("stillScrolling").style.left = "24px";
         
         setTimeout(() => {
-            document.getElementById("hideImg").src = "assets/website/Show.png";
+            document.getElementById("hideImg").src = "assets/website/icons/Show.png";
             document.getElementById("hideBtn").style.left = "24px";
         }, 400);
     }
@@ -130,6 +134,10 @@ function checkPosition() {
     } else {
         isAtBottom = false;
     }
+
+    document.getElementById("keepScrolling").style.opacity = isAtTop ? "1" : "0";
+    document.getElementById("stillScrolling").style.opacity = isAtBottom && pageIndex != pages.length-1 ? "1" : "0";
+    document.getElementById("upScrolling").style.opacity = isAtTop && pageIndex != 0 ? "1" : "0";
 }
 
 
@@ -149,6 +157,7 @@ function scrolled(event) {
 }
 
 function scrollEnded() {
+    checkPosition();
     scrollEnd = true;
 }
 
