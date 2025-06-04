@@ -5,14 +5,16 @@ const pages = [
     "Home", 
     "Gravitate", 
     "Roblox", 
-    "Modeling"
+    "Modeling",
+    "Photography"
 ];
 
 const divs = [
     document.getElementById("homePanel"), 
     document.getElementById("gravitatePanel"), 
     document.getElementById("robloxPanel"), 
-    document.getElementById("modelingPanel")
+    document.getElementById("modelingPanel"),
+    document.getElementById("photographyPanel")
 ];
 
 var pageIndex = 0;
