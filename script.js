@@ -53,7 +53,7 @@ function toggleSide() {
         document.getElementById("stillScrolling").style.left = "324px";
         
         setTimeout(() => {
-            document.getElementById("hideImg").src = "assets/website/icons/Hide.png";
+            document.getElementById("hideImg").src = "assets/website/icons/Left.png";
             document.getElementById("hideBtn").style.left = "324px";
         }, 200);
     } else {
@@ -68,7 +68,7 @@ function toggleSide() {
         document.getElementById("stillScrolling").style.left = "24px";
         
         setTimeout(() => {
-            document.getElementById("hideImg").src = "assets/website/icons/Show.png";
+            document.getElementById("hideImg").src = "assets/website/icons/Right.png";
             document.getElementById("hideBtn").style.left = "24px";
         }, 400);
     }
