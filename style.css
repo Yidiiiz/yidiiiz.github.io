@@ -38,11 +38,11 @@
 
 /* Page 5 */
 .primary5 {
-    background: rgb(104, 64, 33);
+    background: rgb(26, 26, 27);
 }
 
 .secondary5 {
-    background: rgb(120, 74, 39);
+    background: rgb(42, 42, 44);
 }
 
 /* Text */
@@ -120,6 +120,17 @@ p {
     top: 100%;
     left: 50%;
     height: 100%;
+
+    overflow: hidden;
+    border: 0;
+    transform: translate(-50%, -100%);
+}
+
+.screenWidth {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 100%;
 
     overflow: hidden;
     border: 0;
