@@ -105,11 +105,9 @@ function togglePage(newIndex) {
     divs[newIndex].addEventListener("wheel", scrolled);
     divs[newIndex].addEventListener('scrollend', scrollEnded);
 
-    document.getElementById("back").classList.remove("secondary" + (pageIndex+1));
-    document.getElementById("back").classList.add("secondary" + (newIndex+1));
+    document.getElementById("back").classList.replace("secondary" + (pageIndex+1), "secondary" + (newIndex+1));
 
-    document.getElementById("infoPanel").classList.remove("primary" + (pageIndex+1));
-    document.getElementById("infoPanel").classList.add("primary" + (newIndex+1));
+    document.getElementById("infoPanel").classList.replace("primary" + (pageIndex+1), "primary" + (newIndex+1));
 
     pageIndex = newIndex;
     currentPanel = divs[newIndex];
