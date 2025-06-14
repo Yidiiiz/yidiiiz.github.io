@@ -264,18 +264,42 @@ footer {
     border-radius: 10px;
     margin-bottom: 20px;
 }
-#gallery iframe {
+.instaPost iframe {
+    position:relative;
+
+    top: -54px;
+    transform: scale(102%, 102%);
+    /* transform: translate(-50%, 0); */
+      /* scale(102%, 109%); */
+    /* z-index:3; */
+    /* top:-55px; */
+    transition:.5s;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: none !important;
+    /* height: calc(100% + 55px); */
+    /* aspect-ratio: 3/4.2; */
+    /* border-radius: 10px;
+    margin-bottom: 20px; */
+    border: 0;
+}
+.instaPost {
+    overflow: hidden;
+    
     position:relative;
     /* left:50%;
     transform: translate(-50%, 0); */
     z-index:3;
     transition:.5s;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 3/4.25;
+    /* width: calc(100% - 4px); */
+    /* height: auto; */
+    aspect-ratio: 4/5;
+
+    /* border: 0; */
     border-radius: 10px;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
 }
+
 #gallery img:hover {
     z-index: 4;
     /* position: absolute; */
