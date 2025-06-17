@@ -26,6 +26,46 @@ let isAtBottom = false;
 let pageChanging = false;
 let scrollEnd = true;
 
+const rblxGames = [
+    "squish", 
+    "fluid"
+];
+
+const rblxImgs = [
+    2, 
+    1
+];
+
+let rblxIndex = 0;
+let rblxImgIndex = 0;
+
+function scrollImgRblx(isRight) {
+    rblxImgIndex += isRight ? 1 : -1;
+    rblxImgIndex = rblxImgIndex < 0 ? 0 : rblxImgIndex > rblxImgs[rblxIndex] ? rblxImgs[rblxIndex] : rblxImgIndex;
+
+    document.getElementById("nextImgRoblox").style.transition = "none";
+
+    document.getElementById("nextImgRoblox").src = "assets/pages/roblox/" + rblxGames[rblxIndex] + "/" + rblxImgIndex + ".png";
+    document.getElementById("nextImgRoblox").style.left = isRight ? "150%" : "-50%";
+
+    document.getElementById("nextImgRoblox").offsetWidth;
+    document.getElementById("nextImgRoblox").style.transition = "";
+
+    document.getElementById("nextImgRoblox").style.left = "50%";
+    document.getElementById("currImgRoblox").style.left = isRight ? "-50%" : "150%";
+
+    setTimeout(() => {
+        document.getElementById("currImgRoblox").style.transition = "none";
+
+        document.getElementById("currImgRoblox").src = "assets/pages/roblox/" + rblxGames[rblxIndex] + "/" + rblxImgIndex + ".png";
+        document.getElementById("currImgRoblox").style.left = "50%";
+
+        document.getElementById("currImgRoblox").offsetWidth;
+        document.getElementById("currImgRoblox").style.transition = "";
+    }, 500);
+    
+}
+
 function toggleNav(isTrue) {
     navOpen = isTrue != null ? isTrue : !navOpen;
 

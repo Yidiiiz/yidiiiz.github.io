@@ -124,14 +124,15 @@ https://flameyzyzyz.github.io/
         <!-- Roblox -->
         <div id="robloxPanel" class="mainPanel secondary3" style="top:100%;">
             <div class="intro">
-                <img class="screen" src="assets/pages/roblox/squish/1.png">
+                <img id="currImgRoblox" class="screen" src="assets/pages/roblox/squish/0.png">
+                <img id="nextImgRoblox" class="screen" src="">
                 <!-- CREATE SLIDE MENU -->
                 <!-- <img class="screen" src="assets/pages/roblox/squish/2.png"> -->
 
-                <a href="javascript:void(0)" id="robloxLeft" onclick="robloxImage(false)">
+                <a href="javascript:void(0)" id="scrollLeft" class="scrollImg" onclick="scrollImgRblx(false)">
                     <img src="assets/website/icons/Left.png" alt="Left Icon">
                 </a>
-                <a href="javascript:void(0)" id="robloxRight" onclick="robloxImage(true)">
+                <a href="javascript:void(0)" id="scrollRight" class="scrollImg" onclick="scrollImgRblx(true)">
                     <img src="assets/website/icons/Right.png" alt="Left Icon">
                 </a>
 
