@@ -127,7 +127,7 @@ p {
     transition: .5s;
 }
 
-.screenWidth {
+/* .screenWidth {
     position: absolute;
     top: 100%;
     left: 50%;
@@ -136,7 +136,7 @@ p {
     overflow: hidden;
     border: 0;
     transform: translate(-50%, -100%);
-}
+} */
 
 .filtered {
     -webkit-filter: grayscale(100%);
