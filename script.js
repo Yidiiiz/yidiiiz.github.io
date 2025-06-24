@@ -40,6 +40,10 @@ let rblxIndex = 0;
 let rblxImgIndex = 0;
 
 function scrollImgRblx(isRight) {
+    if ((!isRight && rblxImgIndex == 0) || (isRight && rblxImgIndex ==   rblxImgs[rblxIndex] - 1)) {
+        return;
+    }
+
     rblxImgIndex += isRight ? 1 : -1;
     rblxImgIndex = rblxImgIndex < 0 ? 0 : rblxImgIndex > rblxImgs[rblxIndex] ? rblxImgs[rblxIndex] : rblxImgIndex;
 
@@ -54,6 +58,18 @@ function scrollImgRblx(isRight) {
     document.getElementById("nextImgRoblox").style.left = "50%";
     document.getElementById("currImgRoblox").style.left = isRight ? "-50%" : "150%";
 
+    if (rblxImgIndex == 0) {
+        document.getElementById("scrollLeft").style.opacity = 0;
+    } else {
+        document.getElementById("scrollLeft").style.opacity = 1;
+    }
+
+    if (rblxImgIndex == rblxImgs[rblxIndex] - 1) {
+        document.getElementById("scrollLeft").style.opacity = 0;
+    } else {
+        document.getElementById("scrollLeft").style.opacity = 1;
+    }
+
     setTimeout(() => {
         document.getElementById("currImgRoblox").style.transition = "none";
 
@@ -63,7 +79,6 @@ function scrollImgRblx(isRight) {
         document.getElementById("currImgRoblox").offsetWidth;
         document.getElementById("currImgRoblox").style.transition = "";
     }, 500);
-    
 }
 
 function toggleNav(isTrue) {
