@@ -40,7 +40,7 @@ let rblxIndex = 0;
 let rblxImgIndex = 0;
 
 function scrollImgRblx(isRight) {
-    if ((!isRight && rblxImgIndex == 0) || (isRight && rblxImgIndex ==   rblxImgs[rblxIndex] - 1)) {
+    if ((!isRight && rblxImgIndex == 0) || (isRight && rblxImgIndex == rblxImgs[rblxIndex] - 1)) {
         return;
     }
 
@@ -61,13 +61,13 @@ function scrollImgRblx(isRight) {
     if (rblxImgIndex == 0) {
         document.getElementById("scrollLeft").style.opacity = 0;
     } else {
-        document.getElementById("scrollLeft").style.opacity = 1;
+        document.getElementById("scrollLeft").style.opacity = .3;
     }
 
     if (rblxImgIndex == rblxImgs[rblxIndex] - 1) {
-        document.getElementById("scrollLeft").style.opacity = 0;
+        document.getElementById("scrollRight").style.opacity = 0;
     } else {
-        document.getElementById("scrollLeft").style.opacity = 1;
+        document.getElementById("scrollRight").style.opacity = .3;
     }
 
     setTimeout(() => {
