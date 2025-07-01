@@ -203,12 +203,14 @@ function scrolled(event) {
     if (!pageChanging && scrollEnd && delta < 0 && isAtTop) {
         pageChanging = true;
         togglePage(pageIndex - 1);
+        scrollEnd = false;
     } else if (!pageChanging && scrollEnd && delta > 0 && isAtBottom) {
         pageChanging = true;
         togglePage(pageIndex + 1);
+        scrollEnd = true;
+    } else {
+        scrollEnd = false;
     }
-
-    scrollEnd = delta != 0;
 }
 
 function scrollEnded() {
