@@ -16,7 +16,7 @@
     
 #     url = "https://openrouter.ai/api/v1/chat/completions"
 #     headers = {
-#         "Authorization": f"Bearer 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",
+#         "Authorization": f"Bearer sk-or-v1-",
 #         "Content-Type": "application/json"
 #     }
 #     payload = {

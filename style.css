@@ -94,8 +94,8 @@ p {
 .mainPanel {
     /* flex: 4; */
     /* flex:calc(100%-300px); */
-    overflow: scroll;
-    overflow-y: overlay;
+    /* overflow: scroll; */
+    /* overflow-y: overlay; */
     overflow-x: hidden;
     /* scroll-behavior: smooth; */
 

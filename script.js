@@ -24,7 +24,6 @@ let currentPanel = document.getElementById("homePanel");
 let isAtTop = true;
 let isAtBottom = false;
 let pageChanging = false;
-let scrollEnd = true;
 
 const rblxGames = [
     "squish", 
@@ -38,6 +37,7 @@ const rblxImgs = [
 
 let rblxIndex = 0;
 let rblxImgIndex = 0;
+let scrollcount = 0;
 
 function scrollImgRblx(isRight) {
     if ((!isRight && rblxImgIndex == 0) || (isRight && rblxImgIndex == rblxImgs[rblxIndex] - 1)) {
@@ -129,20 +129,21 @@ function toggleSide() {
     }
 }
 
-function togglePage(newIndex) {
+async function togglePage(newIndex) {
     if (newIndex < 0 || newIndex > pages.length - 1 || newIndex == pageIndex) {
         pageChanging = false;
         return;
     }
+    pageChanging = true;
 
-    divs[pageIndex].style.transition = "none";
+    // divs[pageIndex].style.transition = "none";
     divs[newIndex].style.transition = "none";
     divs[newIndex].scrollTop = 0;
     divs[newIndex].style.top = newIndex > pageIndex ? "100%" : "-100%";
 
-    void divs[pageIndex].offsetWidth;
+    // void divs[pageIndex].offsetWidth;
     void divs[newIndex].offsetWidth;
-    divs[pageIndex].style.transition = "";
+    // divs[pageIndex].style.transition = "";
     divs[newIndex].style.transition = "";
 
     divs[pageIndex].style.top = newIndex > pageIndex ? "-100%" : "100%";
@@ -154,14 +155,7 @@ function togglePage(newIndex) {
     document.getElementById(pages[pageIndex]).classList.remove("active");
     document.getElementById(pages[newIndex]).classList.add("active");
 
-    divs[pageIndex].removeEventListener("wheel", scrolled);
-    divs[pageIndex].removeEventListener('scrollend', scrollEnded);
-
-    divs[newIndex].addEventListener("wheel", scrolled);
-    divs[newIndex].addEventListener('scrollend', scrollEnded);
-
     document.getElementById("back").classList.replace("secondary" + (pageIndex+1), "secondary" + (newIndex+1));
-
     document.getElementById("infoPanel").classList.replace("primary" + (pageIndex+1), "primary" + (newIndex+1));
 
     pageIndex = newIndex;
@@ -169,15 +163,16 @@ function togglePage(newIndex) {
 
     // toggleNav(false);
 
-    checkPosition();
-
-    scrollEnd = true;
-    pageChanging = false;
+    setTimeout(() => {
+        checkPosition();
+        pageChanging = false;
+    }, 300);
+    
 }
 
 
 
-function checkPosition() {
+ function checkPosition() {
     if (currentPanel.scrollTop < 1){
         isAtTop = true;
     } else {
@@ -196,27 +191,27 @@ function checkPosition() {
 }
 
 
-function scrolled(event) {
+async function scrolled(event) {
+    const delta = event.deltaY;
+    scrollcount += 1;
     checkPosition();
 
-    const delta = event.deltaY;
-    if (!pageChanging && scrollEnd && delta < 0 && isAtTop) {
-        pageChanging = true;
+    if (!pageChanging && delta < 0 && isAtTop) {
+        isAtTop = true;
         togglePage(pageIndex - 1);
-        scrollEnd = false;
-    } else if (!pageChanging && scrollEnd && delta > 0 && isAtBottom) {
-        pageChanging = true;
+    } else if (!pageChanging && scrollcount >= 3 && delta > 0 && isAtBottom) {
+        isAtTop = true;
         togglePage(pageIndex + 1);
-        scrollEnd = true;
-    } else {
-        scrollEnd = false;
     }
+    
+    checkPosition();
 }
 
 function scrollEnded() {
     checkPosition();
-    scrollEnd = true;
+    scrollcount = 0;
 }
 
-currentPanel.addEventListener("wheel", scrolled);
-currentPanel.addEventListener('scrollend', scrollEnded);
+checkPosition();
+document.getElementById("container").addEventListener('wheel', scrolled);
+document.getElementById("container").addEventListener('scrollend', scrollEnded);
