@@ -158,13 +158,19 @@ async function togglePage(newIndex) {
     document.getElementById("back").classList.replace("secondary" + (pageIndex+1), "secondary" + (newIndex+1));
     document.getElementById("infoPanel").classList.replace("primary" + (pageIndex+1), "primary" + (newIndex+1));
 
+    const lastIndex = pageIndex
     pageIndex = newIndex;
     currentPanel = divs[newIndex];
-
+    checkPosition();
     // toggleNav(false);
 
     setTimeout(() => {
-        checkPosition();
+        divs[lastIndex].style.transition = "none";
+        divs[lastIndex].scrollTop = 0;
+
+        void divs[lastIndex].offsetWidth;
+        divs[lastIndex].style.transition = "";
+
         pageChanging = false;
     }, 300);
     
