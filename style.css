@@ -77,9 +77,6 @@ p {
 
 /* All */
 #container {
-    /* display: flex;
-    flex-direction: row; */
-
     top: 0;
     left: 0;
     margin: 0;
@@ -92,11 +89,8 @@ p {
 
 /* Main */
 .mainPanel {
-    /* flex: 4; */
-    /* flex:calc(100%-300px); */
-    /* overflow: scroll; */
-    /* overflow-y: overlay; */
     overflow-x: hidden;
+    overflow-y: scroll;
     /* scroll-behavior: smooth; */
 
     position: fixed;
@@ -105,38 +99,8 @@ p {
 
     height: 100%;
     transition: .5s;
+    perspective: 1px;
 }
-
-.intro {
-    position: relative;
-    height: 100vh;
-    width: 100%;
-    z-index: -1;
-    overflow: hidden;
-}
-
-.screen {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    height: 100%;
-
-    overflow: hidden;
-    border: 0;
-    transform: translate(-50%, -100%);
-    transition: .5s;
-}
-
-/* .screenWidth {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    width: 100%;
-
-    overflow: hidden;
-    border: 0;
-    transform: translate(-50%, -100%);
-} */
 
 .filtered {
     -webkit-filter: grayscale(100%);
@@ -148,15 +112,42 @@ p {
     padding: 5% 5%;
 }
 
-.content {
+.intro {
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 100vh;
+
+    transition: .5s;
+    transform:
+      translateZ(-1px)
+      scale(2)
+      translateX(-2.5px);
+}
+
+.screen {
     position: relative;
-    z-index: -1;
+    top: 0;
+    left: 50%;
+    height: 100%;
+    z-index: 0;
+    border: 0;
+    transform: translate(-50%, 0);
+    transition: .5s;
+}
+
+.content {
+    overflow: auto;
+    padding-top: 100vh;
+    position: relative;
+    z-index: 1;
     width: 100%;
-    padding: 20px 0;
+    background-clip: content-box;
 }
 
 .content h1, .content h2 {
     margin:0;
+    margin-top: 20px;
     padding: 20px 40px;
 }
 
@@ -226,24 +217,6 @@ footer {
     height: 30px;
 }
 
-#homeCover {
-    position:absolute;
-    background-color:rgb(0,0,0, 0);
-    color:rgb(255,255,255,0);
-    width:100%;
-    height:100%;
-    transition:.5s;
-    /* opacity:0; */
-}
-
-#homeCover:hover {
-    /* opacity:.7; */
-    background-color:rgb(0,0,0, 0.7);
-    color:rgb(255,255,255,.8);
-}
-
-
-
 /* Roblox */
 .scrollImg {
     position:absolute;
@@ -273,9 +246,7 @@ footer {
 
 
 
-
 /* Modeling Gallery */
-
 #gallery {
     /* display: inline-flex;
     flex-direction: column;
@@ -395,9 +366,12 @@ footer {
     /* display: flex;
     flex-direction: column; */
     background:rgb(0, 0, 0, 0.1);
+    /* background: rgb(14, 14, 16); */
 
     transition: .5s;
 }
+
+
 
 #contactIcons {
     display: flex;
@@ -535,6 +509,7 @@ footer {
 /* Scrollbar */
 /* width */
 ::-webkit-scrollbar {
+    z-index: 10;
     margin: 0;
     width: 10px;
 }
@@ -573,3 +548,12 @@ a, #gallery img {
     display: none!important;
     -webkit-appearance: none;
 }
+
+/* @media screen and (max-width: 700px) {
+    .mainPanel {
+        left: 0;
+    }
+    #sidePanel {
+        width: 10px;
+    }
+} */

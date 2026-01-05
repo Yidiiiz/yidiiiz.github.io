@@ -16,14 +16,20 @@ const divs = [
     document.getElementById("modelingPanel"),
     document.getElementById("photographyPanel")
 ];
+const keepScrolling = document.getElementById("keepScrolling").style;
+const stillScrolling = document.getElementById("stillScrolling").style;
+const upScrolling = document.getElementById("upScrolling").style;
 
-var pageIndex = 0;
-
+let pageIndex = 0;
 let currentPanel = document.getElementById("homePanel");
 
 let isAtTop = true;
 let isAtBottom = false;
 let pageChanging = false;
+
+let rblxIndex = 0;
+let rblxImgIndex = 0;
+
 
 const rblxGames = [
     "squish", 
@@ -35,9 +41,20 @@ const rblxImgs = [
     1
 ];
 
-let rblxIndex = 0;
-let rblxImgIndex = 0;
-let scrollcount = 0;
+
+const nextImgRoblox = document.getElementById("nextImgRoblox");
+const currImgRoblox = document.getElementById("currImgRoblox");
+const scrollLeft = document.getElementById("scrollLeft");
+const scrollRight = document.getElementById("scrollRight");
+
+function toggleTransition(div, toggle) {
+    if (toggle) {
+        void div.offsetWidth;
+        div.style.transition = "";
+    } else {
+        div.style.transition = "none";
+    }
+}
 
 function scrollImgRblx(isRight) {
     if ((!isRight && rblxImgIndex == 0) || (isRight && rblxImgIndex == rblxImgs[rblxIndex] - 1)) {
@@ -47,107 +64,74 @@ function scrollImgRblx(isRight) {
     rblxImgIndex += isRight ? 1 : -1;
     rblxImgIndex = rblxImgIndex < 0 ? 0 : rblxImgIndex > rblxImgs[rblxIndex] ? rblxImgs[rblxIndex] : rblxImgIndex;
 
-    document.getElementById("nextImgRoblox").style.transition = "none";
+    toggleTransition(nextImgRoblox, false);
+    nextImgRoblox.src = "assets/pages/roblox/" + rblxGames[rblxIndex] + "/" + rblxImgIndex + ".png";
+    nextImgRoblox.style.left = isRight ? "150%" : "50%";
+    toggleTransition(nextImgRoblox, true);
 
-    document.getElementById("nextImgRoblox").src = "assets/pages/roblox/" + rblxGames[rblxIndex] + "/" + rblxImgIndex + ".png";
-    document.getElementById("nextImgRoblox").style.left = isRight ? "150%" : "-50%";
+    nextImgRoblox.style.left = isRight ? "50%" : "150%";
 
-    document.getElementById("nextImgRoblox").offsetWidth;
-    document.getElementById("nextImgRoblox").style.transition = "";
-
-    document.getElementById("nextImgRoblox").style.left = "50%";
-    document.getElementById("currImgRoblox").style.left = isRight ? "-50%" : "150%";
-
-    if (rblxImgIndex == 0) {
-        document.getElementById("scrollLeft").style.opacity = 0;
-    } else {
-        document.getElementById("scrollLeft").style.opacity = .3;
-    }
-
-    if (rblxImgIndex == rblxImgs[rblxIndex] - 1) {
-        document.getElementById("scrollRight").style.opacity = 0;
-    } else {
-        document.getElementById("scrollRight").style.opacity = .3;
-    }
+    scrollLeft.style.opacity = rblxImgIndex == 0 ? 0 : .3;
+    scrollRight.style.opacity = rblxImgIndex == rblxImgs[rblxIndex] - 1 ? 0 : .3;
 
     setTimeout(() => {
-        document.getElementById("currImgRoblox").style.transition = "none";
-
-        document.getElementById("currImgRoblox").src = "assets/pages/roblox/" + rblxGames[rblxIndex] + "/" + rblxImgIndex + ".png";
-        document.getElementById("currImgRoblox").style.left = "50%";
-
-        document.getElementById("currImgRoblox").offsetWidth;
-        document.getElementById("currImgRoblox").style.transition = "";
+        toggleTransition(currImgRoblox, false);
+        currImgRoblox.src = "assets/pages/roblox/" + rblxGames[rblxIndex] + "/" + rblxImgIndex + ".png";
+        currImgRoblox.style.left = "50%";
+        toggleTransition(currImgRoblox, true);
     }, 500);
 }
 
 function toggleNav(isTrue) {
     navOpen = isTrue != null ? isTrue : !navOpen;
-
-    if (navOpen){
-        document.getElementById("scrollPanel").style.left = "0%";
-        document.getElementById("infoPanel").style.left = "-300px";
-    } else {
-        document.getElementById("infoPanel").style.left = "0%";
-        document.getElementById("scrollPanel").style.left = "-300px";
-    }
+    document.getElementById("scrollPanel").style.left = navOpen ? "0" : "-300px";
+    document.getElementById("infoPanel").style.left = navOpen ? "-300px" : "0";
 }
 
 function toggleSide() {
     sideOpen = !sideOpen;
+    const inPos = sideOpen ? "324px" : "24px";
+    const src = "assets/website/icons/" + (sideOpen ? "Left" : "Right") + ".png";
+    const delay = sideOpen ? 200 : 400;
 
-    if (sideOpen) {
-        document.getElementById("sidePanel").style.left = "0";
-
-        for (let i = 0; i < divs.length; i++) {
-            divs[i].style.left = "300px";
-        }
-        
-        document.getElementById("hideBtn").style.left = "-24px";
-        document.getElementById("keepScrolling").style.left = "324px";
-        document.getElementById("stillScrolling").style.left = "324px";
-        
-        setTimeout(() => {
-            document.getElementById("hideImg").src = "assets/website/icons/Left.png";
-            document.getElementById("hideBtn").style.left = "324px";
-        }, 200);
-    } else {
-        document.getElementById("sidePanel").style.left = "-300px";
-
-        for (let i = 0; i < divs.length; i++) {
-            divs[i].style.left = "0";
-        }
-
-        document.getElementById("hideBtn").style.left = "-24px";
-        document.getElementById("keepScrolling").style.left = "24px";
-        document.getElementById("stillScrolling").style.left = "24px";
-        
-        setTimeout(() => {
-            document.getElementById("hideImg").src = "assets/website/icons/Right.png";
-            document.getElementById("hideBtn").style.left = "24px";
-        }, 400);
+    document.getElementById("sidePanel").style.left = sideOpen ? "0" : "-300px";
+    const divPos = sideOpen ? "300px" : "0";
+    for (let i = 0; i < divs.length; i++) {
+        divs[i].style.left = divPos;
     }
+
+    document.getElementById("hideBtn").style.left = "-24px";
+
+    document.getElementById("keepScrolling").style.left = inPos;
+    document.getElementById("stillScrolling").style.left = inPos;
+    
+    setTimeout(() => {
+        document.getElementById("hideImg").src = src;
+        document.getElementById("hideBtn").style.left = inPos;
+    }, delay);
 }
+
 
 async function togglePage(newIndex) {
     if (newIndex < 0 || newIndex > pages.length - 1 || newIndex == pageIndex) {
-        pageChanging = false;
         return;
     }
+
     pageChanging = true;
+    
+    const newDiv = divs[newIndex];
+    const oldDiv = currentPanel;
 
-    // divs[pageIndex].style.transition = "none";
-    divs[newIndex].style.transition = "none";
-    divs[newIndex].scrollTop = 0;
-    divs[newIndex].style.top = newIndex > pageIndex ? "100%" : "-100%";
+    oldDiv.removeEventListener("scroll", onScroll, { passive: true });
+    newDiv.addEventListener("scroll", onScroll, { passive: true });
 
-    // void divs[pageIndex].offsetWidth;
-    void divs[newIndex].offsetWidth;
-    // divs[pageIndex].style.transition = "";
-    divs[newIndex].style.transition = "";
+    toggleTransition(newDiv, false);
+    newDiv.scrollTop = 0;
+    newDiv.style.top = newIndex > pageIndex ? "100%" : "-100%";
+    toggleTransition(newDiv, true);
 
-    divs[pageIndex].style.top = newIndex > pageIndex ? "-100%" : "100%";
-    divs[newIndex].style.top = "0%";
+    oldDiv.style.top = newIndex > pageIndex ? "-100%" : "100%";
+    newDiv.style.top = "0%";
 
     isAtTop = true;
     isAtBottom = false;
@@ -158,66 +142,58 @@ async function togglePage(newIndex) {
     document.getElementById("back").classList.replace("secondary" + (pageIndex+1), "secondary" + (newIndex+1));
     document.getElementById("infoPanel").classList.replace("primary" + (pageIndex+1), "primary" + (newIndex+1));
 
-    const lastIndex = pageIndex
     pageIndex = newIndex;
-    currentPanel = divs[newIndex];
+    currentPanel = newDiv;
+    
     checkPosition();
     // toggleNav(false);
 
     setTimeout(() => {
-        divs[lastIndex].style.transition = "none";
-        divs[lastIndex].scrollTop = 0;
-
-        void divs[lastIndex].offsetWidth;
-        divs[lastIndex].style.transition = "";
+        toggleTransition(oldDiv, false);
+        oldDiv.scrollTop = 0;
+        toggleTransition(oldDiv, true);
 
         pageChanging = false;
-    }, 300);
+    }, 500);
     
 }
 
 
 
- function checkPosition() {
-    if (currentPanel.scrollTop < 1){
-        isAtTop = true;
-    } else {
-        isAtTop = false;
-    }
 
-    if (currentPanel.scrollTop + currentPanel.offsetHeight > currentPanel.scrollHeight - 1){
-        isAtBottom = true;
-    } else {
-        isAtBottom = false;
-    }
+function checkPosition() {
+    isAtTop = currentPanel.scrollTop < 1;
+    isAtBottom = currentPanel.scrollTop + currentPanel.offsetHeight >= currentPanel.scrollHeight - 1;
 
-    document.getElementById("keepScrolling").style.opacity = isAtTop ? "1" : "0";
-    document.getElementById("stillScrolling").style.opacity = isAtBottom && pageIndex != pages.length-1 ? "1" : "0";
-    document.getElementById("upScrolling").style.opacity = isAtTop && pageIndex != 0 ? "1" : "0";
+    keepScrolling.opacity = isAtTop ? "1" : "0";
+    stillScrolling.opacity = isAtBottom && pageIndex != pages.length-1 ? "1" : "0";
+    upScrolling.opacity = isAtTop && pageIndex != 0 ? "1" : "0";
 }
 
-
-async function scrolled(event) {
+let scrollEnd = true;
+async function onWheel(event) {
     const delta = event.deltaY;
-    scrollcount += 1;
-    checkPosition();
 
-    if (!pageChanging && delta < 0 && isAtTop) {
+    if (scrollEnd && !pageChanging && delta < 0 && isAtTop) {
         isAtTop = true;
         togglePage(pageIndex - 1);
-    } else if (!pageChanging && scrollcount >= 3 && delta > 0 && isAtBottom) {
+    } else if (scrollEnd && !pageChanging && delta > 0 && isAtBottom) {
         isAtTop = true;
         togglePage(pageIndex + 1);
     }
-    
-    checkPosition();
 }
 
-function scrollEnded() {
+let scrollTimeout;
+async function onScroll() {
+    clearTimeout(scrollTimeout);
+    scrollEnd = false;
     checkPosition();
-    scrollcount = 0;
+
+    scrollTimeout = setTimeout(function() {
+        scrollEnd = true;
+    }, 300);
 }
 
-checkPosition();
-document.getElementById("container").addEventListener('wheel', scrolled);
-document.getElementById("container").addEventListener('scrollend', scrollEnded);
+
+document.getElementById("container").addEventListener('wheel', onWheel, { passive: true });
+currentPanel.addEventListener("scroll", onScroll, { passive: true });
