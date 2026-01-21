@@ -116,7 +116,8 @@ async function togglePage(newIndex) {
     if (newIndex < 0 || newIndex > pages.length - 1 || newIndex == pageIndex) {
         return;
     }
-
+    
+    isAtTop = true;
     pageChanging = true;
     
     const newDiv = divs[newIndex];
@@ -175,10 +176,8 @@ async function onWheel(event) {
     const delta = event.deltaY;
 
     if (scrollEnd && !pageChanging && delta < 0 && isAtTop) {
-        isAtTop = true;
         togglePage(pageIndex - 1);
     } else if (scrollEnd && !pageChanging && delta > 0 && isAtBottom) {
-        isAtTop = true;
         togglePage(pageIndex + 1);
     }
 }
