@@ -144,18 +144,32 @@ https://flameyzyzyz.github.io/
 
                     <div class="resumeLinks">
                         <a href="https://github.com/yidiiiz" target="_blank" rel="noopener noreferrer">
+                            <!-- Resume alignment update: previous unwrapped label.
                             <img src="assets/website/logos/Github.png" alt="">GitHub
+                            -->
+                            <img src="assets/website/logos/Github.png" alt=""><span>GitHub</span>
                         </a>
                         <a href="https://www.linkedin.com/in/yidiiiz/" target="_blank" rel="noopener noreferrer">
+                            <!-- Resume alignment update: previous unwrapped label.
                             <img src="assets/website/logos/Linkedin.png" alt="">LinkedIn
+                            -->
+                            <img src="assets/website/logos/Linkedin.png" alt=""><span>LinkedIn</span>
                         </a>
+                        <!-- Resume link update: open the stored PDF instead of downloading it.
                         <a href="assets/pages/home/Yidi-Zhao-SWE-Resume.pdf" download>Download Resume</a>
+                        -->
+                        <a href="assets/pages/home/Yidi-Zhao-SWE-Resume.pdf" target="_blank" rel="noopener noreferrer">View Resume</a>
                     </div>
 
                     <p class="resumeContact">
                         <a href="mailto:876yidi@gmail.com">876yidi@gmail.com</a>
                         <a href="tel:+13014019768">(301) 401-9768</a>
+                        <!-- Resume contact update: keep the address without linking to this site.
                         <a href="https://www.yidizhao.dev/">yidizhao.dev</a>
+                        -->
+                        <!-- Resume contact update: website address removed.
+                        <span>yidizhao.dev</span>
+                        -->
                     </p>
                 </header>
 
@@ -485,8 +499,15 @@ https://flameyzyzyz.github.io/
         
         <a id="hideBtn" href="javascript:void(0)" onclick="toggleSide()">
             <img id="hideImg" src="assets/website/icons/Left.png" alt="Menu Icon">
+            <!-- Mobile navigation added: visible way to reopen the fullscreen panel. -->
+            <!-- Icon-only mobile menu update: previous label kept for reference.
+            <span class="mobileMenuLabel"><img src="assets/website/icons/Menu.png" alt="">Menu</span>
+            -->
+            <span class="mobileMenuLabel"><img src="assets/website/icons/Menu.png" alt="Open menu"></span>
+            <!-- End mobile navigation addition. -->
         </a>
         
+        <!-- Clickable scrolling controls added: original prompts kept for reference.
         <div id="keepScrolling" class="text scrolling">
             Keep<br>Scrolling<br>
             <img src="assets/website/icons/Scroll.png" class="shadow" alt="Keep Scrolling">
@@ -501,14 +522,33 @@ https://flameyzyzyz.github.io/
             <img src="assets/website/icons/Scroll.png" class="shadow" alt="You Can Scroll Up Too">
             <br>You Can Scroll<br>Up Too
         </div>
+        -->
 
+        <!-- Clickable scrolling controls: content, next page, and previous page. -->
+        <button type="button" id="keepScrolling" class="text scrolling" onclick="scrollFromPrompt(0)" aria-label="Scroll down to page content">
+            Keep<br>Scrolling<br>
+            <img src="assets/website/icons/Scroll.png" class="shadow" alt="">
+        </button>
 
+        <button type="button" id="stillScrolling" class="text scrolling" onclick="scrollFromPrompt(1)" aria-label="Go to next page" style="opacity: 0;">
+            You Can Still<br>Keep Scrolling<br>
+            <img src="assets/website/icons/Scroll.png" class="shadow" alt="">
+        </button>
+
+        <button type="button" id="upScrolling" class="text" onclick="scrollFromPrompt(-1)" aria-label="Go to previous page">
+            <img src="assets/website/icons/Scroll.png" class="shadow" alt="">
+            <br>You Can Scroll<br>Up Too
+        </button>
+        <!-- End clickable scrolling controls. -->
 
 
         <!-- Side Panel -->
         <div id="sidePanel" class="secondary1">
             <!-- Navigation -->
+            <!-- Navigation theme update: previous opening tag kept for reference.
             <div id="scrollPanel" class="panel" style="left:-300px;">
+            -->
+            <div id="scrollPanel" class="panel primary1" style="left:-300px;">
                 <a href="javascript:void(0)" class="closeBtn" onclick="toggleNav()">
                     <img src="assets/website/icons/Menu.png" alt="Menu Icon">
                 </a>
@@ -521,6 +561,12 @@ https://flameyzyzyz.github.io/
                     <a id="Modeling" onclick="togglePage(3)">3D Modeling</a>
                     <a id="Photography" onclick="togglePage(4)">Photography</a>
                 </div>
+
+                <!-- Mobile navigation added: return to the current page without selecting another. -->
+                <!-- Mobile navigation refinement: removed Back to page control.
+                <button type="button" class="mobileEnter text">Back to page</button>
+                -->
+                <!-- End mobile navigation addition. -->
 
                 <content id="contactIcons">
                     <a style="height: 30px;"></a>
@@ -546,6 +592,12 @@ https://flameyzyzyz.github.io/
                     <h1 style="margin:10px 0; padding:0 40px;">
                         Yidi Zhao
                     </h1>
+                    <!-- Mobile navigation added: the panel background also enters the page. -->
+                    <!-- Entry prompt update: previous arrow kept for reference.
+                    <button type="button" class="mobileEnter text">Tap to enter &rarr;</button>
+                    -->
+                    <button type="button" class="mobileEnter text">Tap to enter &gt;</button>
+                    <!-- End mobile navigation addition. -->
                 </div>
                 
                 <content id="contactIcons">

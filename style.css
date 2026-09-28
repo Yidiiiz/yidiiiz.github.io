@@ -711,3 +711,352 @@ a, #gallery img {
         width: 10px;
     }
 } */
+
+/* Mobile navigation added: fullscreen sidebar, entry prompt, and page menu. */
+.mobileEnter, .mobileMenuLabel {
+    display: none;
+}
+
+/* Keep this query in sync with mobileLayout in script.js. */
+@media screen and (max-width: 700px), screen and (hover: none) and (pointer: coarse) {
+    .mainPanel {
+        left: 0 !important;
+    }
+
+    #sidePanel {
+        left: 0 !important;
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        height: 100dvh;
+        overflow: hidden;
+        /* Sidebar backdrop update: let the current page show through the page list. */
+        /* background: rgb(10, 10, 12); */
+        background: transparent;
+        z-index: 5;
+        transform: translateX(0);
+        cursor: pointer;
+    }
+
+    #sidePanel .panel {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+    }
+
+    #infoPanel {
+        left: 0 !important;
+    }
+
+    #scrollPanel {
+        left: -100% !important;
+    }
+
+    .mobileNavOpen #infoPanel {
+        left: -100% !important;
+    }
+
+    .mobileNavOpen #scrollPanel {
+        left: 0 !important;
+    }
+
+    .mobileSideClosed #sidePanel {
+        transform: translateX(-100%);
+        pointer-events: none;
+        visibility: hidden;
+    }
+
+    #sidePanel .closeBtn {
+        min-height: 72px;
+        flex-shrink: 0;
+        cursor: pointer;
+    }
+
+    #sidePanel .sideContent {
+        padding: 24px 0;
+    }
+
+    .mobileEnter {
+        display: block;
+        margin: 24px auto;
+        padding: 12px 24px;
+        /* Mobile prompt refinement: keep the previous border for reference. */
+        /* border: 1px solid rgba(255, 255, 255, .3); */
+        border: 0;
+        border-radius: 10px;
+        background: transparent;
+        /* Mobile prompt refinement: softer text, with no button outline. */
+        /* color: rgba(255, 255, 255, .8); */
+        color: rgba(255, 255, 255, .35);
+        /* Entry prompt update: smaller italic text. */
+        /* font-size: 18px; */
+        font-size: 16px;
+        font-style: italic;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+
+    #sidePanel #contactIcons {
+        flex-shrink: 0;
+    }
+
+    #hideBtn {
+        display: none;
+        position: fixed;
+        top: max(12px, env(safe-area-inset-top));
+        left: max(12px, env(safe-area-inset-left)) !important;
+        width: auto;
+        height: auto;
+        /* Icon-only mobile menu update: preserve the previous button styling. */
+        /* padding: 10px 14px; */
+        /* border: 1px solid rgba(255, 255, 255, .2); */
+        /* border-radius: 10px; */
+        padding: 12px;
+        border: 0;
+        background: transparent;
+        filter: drop-shadow(0 1px 3px rgba(0, 0, 0, .9));
+        /* Navigation theme update: use the current primary class background. */
+        /* background: rgb(10, 10, 12); */
+        color: rgba(255, 255, 255, .8);
+        opacity: 1;
+        z-index: 4;
+        text-decoration: none;
+        font-family: 'Trebuchet MS';
+    }
+
+    .mobileSideClosed #hideBtn, .mobileMenuLabel {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    #hideImg {
+        display: none;
+    }
+
+    .mobileMenuLabel img {
+        /* Icon-only mobile menu update: match the original 30px Menu icon. */
+        /* width: 20px; */
+        /* height: 20px; */
+        width: 30px;
+        height: 30px;
+        opacity: .65;
+    }
+
+    #sidePanel a:focus-visible, .mobileEnter:focus-visible, #hideBtn:focus-visible {
+        outline: 2px solid rgba(255, 255, 255, .8);
+        outline-offset: -2px;
+    }
+
+    .scrolling {
+        left: 24px !important;
+    }
+}
+/* End mobile navigation additions. */
+
+/* Touch navigation added: touch scrolling stays within a page, so hide page-switch hints.
+   A connected mouse/trackpad restores these hints after its first wheel event. */
+/* Clickable scroll update: old touch-only hiding rules kept for reference.
+@media (hover: none), (pointer: coarse) {
+    #stillScrolling, #upScrolling {
+        display: none;
+    }
+
+    .wheelNavigation #stillScrolling, .wheelNavigation #upScrolling {
+        display: block;
+    }
+}
+*/
+/* End touch navigation additions. */
+
+/* Mobile photography update: fill the first screen with the cover in either orientation. */
+@media screen and (max-width: 700px), screen and (hover: none) and (pointer: coarse) {
+    #photographyPanel .intro {
+        position: absolute;
+        height: 100vh;
+        height: 100dvh;
+        transform: none;
+    }
+
+    /* Mobile overrides preserve the original desktop image styles in index.html. */
+    #photographyPanel .intro .screen {
+        width: 100% !important;
+        height: 100% !important;
+        top: 0 !important;
+        left: 0 !important;
+        transform: none !important;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    #photographyPanel .content {
+        padding-top: 100vh;
+        padding-top: 100dvh;
+    }
+}
+/* End mobile photography update. */
+
+/* Sidebar backdrop update: translucent page selection keeps the current page visible.
+   The solid primary backgrounds above still apply to the information panel and Menu button. */
+#scrollPanel.primary1 {
+    --nav-color: 10, 10, 12;
+}
+
+#scrollPanel.primary2 {
+    --nav-color: 10, 35, 59;
+}
+
+#scrollPanel.primary3 {
+    --nav-color: 78, 37, 25;
+}
+
+#scrollPanel.primary4 {
+    --nav-color: 104, 64, 33;
+}
+
+#scrollPanel.primary5 {
+    --nav-color: 26, 26, 27;
+}
+
+#scrollPanel {
+    background: rgba(var(--nav-color), .55);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+/* End sidebar backdrop update. */
+
+/* Mobile gallery update: photography and modeling use one full-width column. */
+@media screen and (max-width: 700px), screen and (hover: none) and (pointer: coarse) {
+    #photographyPanel #gallery, #modelingPanel #gallery {
+        column-count: 1;
+    }
+}
+/* End mobile gallery update. */
+
+/* Clickable scroll update: keep the original prompts, with usable touch targets. */
+#keepScrolling, #stillScrolling, #upScrolling {
+    background: transparent;
+    border: 0;
+    padding: 8px;
+    width: auto;
+    height: auto;
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 16px;
+    font-family: 'Trebuchet MS';
+    line-height: 1.2;
+    cursor: pointer;
+    pointer-events: auto;
+    color: rgba(255, 255, 255, .45);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, .8);
+}
+
+#keepScrolling, #stillScrolling {
+    text-align: left;
+    bottom: max(16px, env(safe-area-inset-bottom));
+}
+
+#upScrolling {
+    top: max(16px, env(safe-area-inset-top));
+}
+
+#keepScrolling:disabled, #stillScrolling:disabled, #upScrolling:disabled {
+    pointer-events: none;
+}
+
+#keepScrolling:focus-visible, #stillScrolling:focus-visible, #upScrolling:focus-visible {
+    outline: 1px solid currentColor;
+    border-radius: 4px;
+}
+/* End clickable scroll update. */
+
+/* Scroll arrow fix: keep arrows inside their buttons and shade them against bright images.
+   The original absolute .shadow positioning and light shadow remain above for reference. */
+#keepScrolling, #stillScrolling, #upScrolling {
+    position: fixed;
+}
+
+#keepScrolling img, #stillScrolling img, #upScrolling img {
+    position: static;
+    display: inline-block;
+    vertical-align: middle;
+    /* Scroll opacity adjustment: match the text's .45 alpha. */
+    /* opacity: .65; */
+    opacity: .45;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .95)) drop-shadow(0 0 3px rgba(0, 0, 0, .8));
+}
+
+#upScrolling {
+    right: max(24px, env(safe-area-inset-right));
+}
+/* End scroll arrow fix. */
+
+/* Resume link refinement: match the icons to the text, including hover and keyboard focus. */
+.resumeLinks img {
+    opacity: .7;
+    transition: .25s;
+}
+
+/* Resume opacity update: previous hover brightening kept for reference.
+.resumeLinks a:hover img, .resumeLinks a:focus-visible img {
+    opacity: 1;
+}
+*/
+
+/* Keep all three recruiting links aligned in one row on mobile. */
+@media screen and (max-width: 700px), screen and (hover: none) and (pointer: coarse) {
+    .resumeLinks {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 6px;
+    }
+
+    .resumeLinks a {
+        justify-content: center;
+        gap: 4px;
+        padding: 10px 6px;
+        min-height: 44px;
+        box-sizing: border-box;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+
+    .resumeLinks img {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .resumeLinks a {
+        font-size: 12px;
+    }
+}
+/* End resume link refinement. */
+
+/* Resume alignment and opacity update: center icons with tight label boxes,
+   and keep all three labels at the same opacity even after tapping a link. */
+#homePanel .resumeLinks a {
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+    color: rgba(255, 255, 255, .7);
+}
+
+.resumeLinks img, .resumeLinks span {
+    display: block;
+}
+
+.resumeLinks img {
+    object-fit: contain;
+    /* Resume icon adjustment: move both logos 2px up and left. */
+    /* transform: translate(-2px, -2px); */
+    /* Resume icon refinement: move 1px down and right from the previous position. */
+    transform: translate(-1px, -1px);
+}
+/* End resume alignment and opacity update. */
