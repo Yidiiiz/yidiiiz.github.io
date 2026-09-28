@@ -151,7 +151,7 @@ p {
     padding: 20px 40px;
 }
 
-.content p {
+.content > * {
     margin: 20px;
     padding: 20px;
     border-radius: 10px;
@@ -164,18 +164,18 @@ p {
     background: black !important;
 }
 
-footer {
+.content footer {
     width: 100%;
     height: 20px;
     position: relative;
-
-    padding: 30px 0;
+    margin: 0 0;
+    padding: 10px 0 30px 0;
     text-align:center;
     /* background: rgb(0, 0, 0, 0.2); */
 
     z-index: 3;
-    font-size:14px;
-    font-weight: bold;
+    font-size: 14px;
+    font-weight: 550;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
 
     color: rgb(255, 255, 255, 0.075);   
@@ -235,6 +235,140 @@ footer a img {
 .closeBtn img {
     margin: 24px 0 0 24px;
     height: 30px;
+}
+
+/* Home / Resume */
+#homePanel .resume {
+    /* padding-top: 40px; */
+    /* max-width: 1100px; */
+    margin: 0 auto;
+}
+
+#homePanel .text {
+    color: rgba(255, 255, 255, .7);
+    line-height: 1.6;
+    font-size: 17px;
+}
+
+#homePanel .resumeIntro {
+    padding: 20px;
+}
+
+#homePanel h1, #homePanel h2, #homePanel h3 {
+    color: rgba(255, 255, 255, .9);
+    margin: 0;
+    padding: 0;
+}
+
+#homePanel h1 {
+    font-size: 40px;
+}
+
+#homePanel h2 {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, .15);
+}
+
+#homePanel h3 {
+    font-size: 20px;
+}
+
+#homePanel p {
+    font-size: inherit;
+    margin: 8px 0;
+}
+
+#homePanel a {
+    color: inherit;
+    text-underline-offset: 4px;
+    transition: .25s;
+}
+
+#homePanel a:hover, #homePanel a:focus-visible {
+    color: white;
+}
+
+#homePanel a:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+}
+
+.resumeLinks, .resumeContact, .resumeHeading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 20px;
+}
+
+.resumeLinks {
+    margin: 24px 0 16px;
+}
+
+.resumeLinks a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    border: 1px solid rgba(255, 255, 255, .2);
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.resumeLinks img {
+    width: 22px;
+    height: 22px;
+}
+
+.resumeHeading {
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.resumeHeading span, #homePanel .resumeDetails {
+    color: rgba(255, 255, 255, .55);
+    font-size: 16px;
+}
+
+.resumeEntry + .resumeEntry {
+    margin-top: 28px;
+}
+
+#homePanel ul {
+    padding-left: 24px;
+    margin: 12px 0 0;
+}
+
+#homePanel li + li {
+    margin-top: 6px;
+}
+
+#homePanel .resumeSkills {
+    list-style: none;
+    padding-left: 0;
+}
+
+/* Keep resume text available for recruiters to select and copy. */
+#homePanel .resume, #homePanel .resume * {
+    user-select: text;
+    -webkit-user-select: text;
+    pointer-events: auto;
+}
+
+@media screen and (max-width: 700px) {
+    #homePanel .resume > * {
+        margin: 16px;
+        padding: 16px;
+    }
+
+    #homePanel .resumeHeading {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    #homePanel .resume footer {
+        width: auto;
+    }
 }
 
 /* Roblox */

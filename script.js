@@ -166,8 +166,10 @@ function checkPosition() {
     isAtTop = currentPanel.scrollTop < 1;
     isAtBottom = currentPanel.scrollTop + currentPanel.offsetHeight >= currentPanel.scrollHeight - 1;
 
-    keepScrolling.opacity = isAtTop ? "1" : "0";
-    stillScrolling.opacity = isAtBottom && pageIndex != pages.length-1 ? "1" : "0";
+    // keepScrolling.opacity = isAtTop ? "1" : "0";
+    keepScrolling.opacity = isAtTop && pageIndex != 0 ? "1" : "0";
+    // stillScrolling.opacity = isAtBottom && pageIndex != pages.length-1 ? "1" : "0";
+    stillScrolling.opacity = isAtBottom && pageIndex != 0 && pageIndex != pages.length-1 ? "1" : "0";
     upScrolling.opacity = isAtTop && pageIndex != 0 ? "1" : "0";
 }
 
@@ -196,3 +198,10 @@ async function onScroll() {
 
 document.getElementById("container").addEventListener('wheel', onWheel, { passive: true });
 currentPanel.addEventListener("scroll", onScroll, { passive: true });
+
+// Give the resume the full screen on smaller devices.
+if (window.matchMedia("(max-width: 700px)").matches) {
+    toggleSide();
+}
+
+checkPosition();
