@@ -1115,3 +1115,29 @@ a, #gallery img {
     }
 }
 /* End mobile glass update. */
+
+/* Mobile control refinement: bound external-link icons independently of mobile font sizing. */
+@media screen and (max-width: 700px), screen and (hover: none) and (pointer: coarse) {
+    svg.externalLinkIcon {
+        width: 16px;
+        height: 16px;
+        max-width: 16px;
+        max-height: 16px;
+        flex-shrink: 0;
+    }
+
+    /* Override the earlier focus outline on menu controls only; retain it for other links. */
+    #hideBtn, #hideBtn:focus, #hideBtn:focus-visible,
+    #sidePanel .closeBtn, #sidePanel .closeBtn:focus, #sidePanel .closeBtn:focus-visible {
+        border: 0;
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Keep keyboard focus visible with icon shading instead of a rectangular outline. */
+    #hideBtn:focus-visible img, #sidePanel .closeBtn:focus-visible img {
+        opacity: 1;
+        filter: drop-shadow(0 0 3px rgba(255, 255, 255, .6));
+    }
+}
+/* End mobile control refinement. */
