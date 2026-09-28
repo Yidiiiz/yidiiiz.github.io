@@ -902,23 +902,29 @@ a, #gallery img {
 
 /* Sidebar backdrop update: translucent page selection keeps the current page visible.
    The solid primary backgrounds above still apply to the information panel and Menu button. */
-#scrollPanel.primary1 {
+/* Mobile glass update: share each page's tint with the welcome panel. */
+/* #scrollPanel.primary1 { */
+#scrollPanel.primary1, #infoPanel.primary1 {
     --nav-color: 10, 10, 12;
 }
 
-#scrollPanel.primary2 {
+/* #scrollPanel.primary2 { */
+#scrollPanel.primary2, #infoPanel.primary2 {
     --nav-color: 10, 35, 59;
 }
 
-#scrollPanel.primary3 {
+/* #scrollPanel.primary3 { */
+#scrollPanel.primary3, #infoPanel.primary3 {
     --nav-color: 78, 37, 25;
 }
 
-#scrollPanel.primary4 {
+/* #scrollPanel.primary4 { */
+#scrollPanel.primary4, #infoPanel.primary4 {
     --nav-color: 104, 64, 33;
 }
 
-#scrollPanel.primary5 {
+/* #scrollPanel.primary5 { */
+#scrollPanel.primary5, #infoPanel.primary5 {
     --nav-color: 26, 26, 27;
 }
 
@@ -1060,3 +1066,52 @@ a, #gallery img {
     transform: translate(-1px, -1px);
 }
 /* End resume alignment and opacity update. */
+
+/* External link icon update: use SVG geometry instead of platform-dependent emoji glyphs. */
+.externalLinkIcon {
+    display: inline-block;
+    /* Link spacing update: replace underlined whitespace with an unadorned gap. */
+    /* margin-left: .25em; */
+    /* Link spacing refinement: remove the extra gap before the icon. */
+    margin-left: 0;
+    width: .8em;
+    height: .8em;
+    vertical-align: baseline;
+    /* External link icon adjustment: move 1px down and right. */
+    /* transform: translate(1px, 1px); */
+    /* External link icon refinement: another 1px down and right. */
+    transform: translate(2px, 2px);
+    pointer-events: none;
+}
+/* End external link icon update. */
+
+/* Mobile glass update: match the welcome panel to the translucent page-selection menu.
+   Desktop keeps its original solid information panel; its primary styles remain above. */
+@media screen and (max-width: 700px), screen and (hover: none) and (pointer: coarse) {
+    #infoPanel {
+        /* Welcome glass refinement: increase opacity from 55% to 78%. */
+        /* background: rgba(var(--nav-color), .55); */
+        /* background: rgba(var(--nav-color), .78); */
+        /* Welcome glass refinement: increase opacity to 90%. */
+        background: rgba(var(--nav-color), .9);
+        /* Mobile Safari glass fix: blur the page itself below the overlay instead. */
+        /* -webkit-backdrop-filter: blur(5px); */
+        /* backdrop-filter: blur(5px); */
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
+
+    /* Avoid double blur on browsers that also render the menu's backdrop filter. */
+    #scrollPanel {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
+
+    /* Mobile Safari glass fix: keep both sidebar views sharp above the blurred page.
+       Closing the sidebar restores the page's existing styles automatically. */
+    body:not(.mobileSideClosed) .mainPanel {
+        -webkit-filter: blur(5px);
+        filter: blur(5px);
+    }
+}
+/* End mobile glass update. */
